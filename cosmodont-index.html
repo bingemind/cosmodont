@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cosmodont Dental Clinic — Premium dental care in Gomti Nagar, Lucknow. ISO 9001:2015 certified. Lucknow's largest clear aligners provider. Painless dentistry, implants, cosmetic treatments.">
+<meta name="theme-color" content="#FAF7F2">
+<title>Cosmodont Dental Clinic | Where Smiles Are Crafted With Care</title>
+
+<!--
+╔══════════════════════════════════════════════════════════════════╗
+║            COSMODONT DENTAL CLINIC — index.html                  ║
+║                                                                  ║
+║  PROJECT FILE STRUCTURE                                          ║
+║  ├── index.html   ← page structure (this file)                   ║
+║  ├── style.css    ← all visual styling + CSS variables           ║
+║  ├── config.js    ← all clinic content (edit this for updates)   ║
+║  └── app.js       ← all interactivity (navbar, form, animations) ║
+║                                                                  ║
+║  DEVELOPER NOTES: How to update this site                        ║
+║                                                                  ║
+║  1. CONTENT CHANGES — Edit config.js only. Doctor names,         ║
+║     phone numbers, hours, services, testimonials — all live      ║
+║     there. No HTML or JS changes required.                       ║
+║                                                                  ║
+║  2. COLOUR / FONT CHANGES — Edit the :root {} block at the       ║
+║     top of style.css. Change --color-gold once and it updates    ║
+║     everywhere. Same for fonts, spacing, shadows.                ║
+║                                                                  ║
+║  3. LAYOUT / SECTION CHANGES — Edit index.html. Each section     ║
+║     is wrapped in a  ═══ SECTION: NAME ═══  comment for   ║
+║     easy navigation. Use Ctrl+F to jump to any section.          ║
+║                                                                  ║
+║  4. IMAGE REPLACEMENT — Find <div> tags with data-image-id="..."  ║
+║     Replace each div with an <img> tag pointing to the real      ║
+║     image file. The data-image-id tells you which image          ║
+║     goes where (e.g. data-image-id="doctor-utkarsh").            ║
+║                                                                  ║
+║  5. FORM INTEGRATION — Open config.js and find                   ║
+║     formSubmitHandler. Follow the OPTION A / B / C comments      ║
+║     to connect Formspree, Netlify, GrahakBot, or any backend.    ║
+╚══════════════════════════════════════════════════════════════════╝
+-->
+
+<!-- Google Fonts: Cormorant Garamond (display) + DM Sans (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
+<!-- Stylesheet -->
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ═══ SECTION: NAVBAR ═══ -->
+<nav class="navbar" id="navbar" aria-label="Main navigation">
+  <div class="container">
+    <div class="navbar-inner">
+      <a href="#home" class="navbar-logo" aria-label="Cosmodont Dental Clinic">
+        Cosmodont<span class="logo-dot">.</span>
+      </a>
+      <ul class="navbar-links" role="list">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Smile Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="navbar-book">
+        <a href="#contact" class="btn btn-gold">Book Appointment</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="#home"     onclick="closeMobileMenu()">Home</a>
+  <a href="#services" onclick="closeMobileMenu()">Services</a>
+  <a href="#about"    onclick="closeMobileMenu()">About</a>
+  <a href="#gallery"  onclick="closeMobileMenu()">Smile Gallery</a>
+  <a href="#contact"  onclick="closeMobileMenu()">Contact</a>
+  <a href="#contact" class="btn btn-gold" onclick="closeMobileMenu()">Book Appointment</a>
+  <span class="mobile-nav-iso">ISO 9001:2015 Certified</span>
+</nav>
+
+
+<!-- ═══ SECTION: HERO ═══ -->
+<section class="hero" id="home" aria-label="Hero">
+  <!-- Floating abstract dental shapes — purely decorative -->
+  <div class="hero-shapes" aria-hidden="true">
+    <!-- Stylised tooth outline -->
+    <svg class="hero-shape hs-1" viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 8C28 8 12 24 12 44c0 12 4 22 10 30l8 50c1 5 4 8 8 8s6-3 7-6l5-20 5 20c1 3 3 6 7 6s7-3 8-8l8-50c6-8 10-18 10-30C88 24 72 8 50 8z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M35 30 Q50 22 65 30" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+    </svg>
+    <!-- Smile arc -->
+    <svg class="hero-shape hs-2" viewBox="0 0 120 65" fill="none">
+      <path d="M8 12 Q60 85 112 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="8"   cy="12" r="4" fill="currentColor" opacity="0.5"/>
+      <circle cx="112" cy="12" r="4" fill="currentColor" opacity="0.5"/>
+    </svg>
+    <!-- Small tooth -->
+    <svg class="hero-shape hs-3" viewBox="0 0 60 80" fill="none">
+      <path d="M30 5C18 5 8 14 8 26c0 7 2 13 6 18l5 30c1 3 3 4 5 4s3-2 4-4l2-10 2 10c1 2 2 4 4 4s4-1 5-4l5-30c4-5 6-11 6-18C52 14 42 5 30 5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </svg>
+    <!-- Large faint dashed arc -->
+    <svg class="hero-shape hs-4" viewBox="0 0 200 100" fill="none">
+      <path d="M10 80 Q100 -30 190 80" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 8"/>
+    </svg>
+    <!-- Dot cluster -->
+    <!-- <svg class="hero-shape hs-5" viewBox="0 0 50 50" fill="currentColor">
+      <circle cx="10" cy="10" r="5"/>
+      <circle cx="30" cy="10" r="3.5"/>
+      <circle cx="20" cy="28" r="4"/>
+      <circle cx="40" cy="32" r="2.5"/>
+    </svg> -->
+  </div>
+
+  <div class="container">
+    <div class="hero-content">
+      <p class="hero-eyebrow" id="heroEyebrow">Gomti Nagar, Lucknow &nbsp;·&nbsp; ISO 9001:2015 Certified</p>
+      <h1 class="hero-headline">
+        <span class="hero-line-1" id="heroLine1">Your Smile.</span>
+        <span class="hero-line-2" id="heroLine2">Our <em>Life's Work.</em></span>
+      </h1>
+      <p class="hero-subtext" id="heroSubtext">
+        Lucknow's most trusted dental clinic — ISO certified, painless, and built entirely around you.
+      </p>
+      <div class="hero-ctas" id="heroCtas">
+        <a href="#contact" class="btn btn-gold">Book a Consultation</a>
+        <a href="#gallery" class="btn btn-outline-dark">View Our Work</a>
+      </div>
+      <div class="trust-bar" id="trustBar">
+        <span class="trust-chip"><span class="trust-chip-icon">⭐</span>5-Star Rated</span>
+        <span class="trust-chip"><span class="trust-chip-icon">🏅</span>ISO 9001:2015</span>
+        <span class="trust-chip"><span class="trust-chip-icon">🦷</span>Largest Aligner Provider in UP</span>
+        <span class="trust-chip"><span class="trust-chip-icon">😊</span>100+ Happy Patients</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ SECTION: WHY COSMODONT ═══ -->
+<section class="why-section section" id="about" aria-labelledby="whyHeading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">The Cosmodont Difference</span>
+      <h2 class="display-lg" id="whyHeading">A dental clinic that feels<br>nothing like one.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal reveal-d1">
+        <div class="why-icon">🏛️</div>
+        <h3 class="why-title">Café-Like Waiting Area</h3>
+        <p class="why-text">Arrive early on purpose. Free WiFi, comfortable seating, and none of that sterile waiting-room anxiety that makes your heart race before you even sit down.</p>
+      </div>
+      <div class="why-card reveal reveal-d2">
+        <div class="why-icon">🧪</div>
+        <h3 class="why-title">ISO Certified Hygiene</h3>
+        <p class="why-text">Strict 3-month audits. A dedicated sterilization protocol. Every instrument, every time — because your safety isn't something we treat as optional.</p>
+      </div>
+      <div class="why-card reveal reveal-d3">
+        <div class="why-icon">👨‍⚕️</div>
+        <h3 class="why-title">Doctors Who Don't Oversell</h3>
+        <p class="why-text">We explain everything upfront. We recommend only what you actually need. Your trust matters more to us than a bigger bill — and our patients notice.</p>
+      </div>
+      <div class="why-card reveal reveal-d4">
+        <div class="why-icon">📅</div>
+        <h3 class="why-title">Appointments That Run On Time</h3>
+        <p class="why-text">Your time is respected here. Separate areas for waiting, consultation, and surgery mean you're never stuck wondering when your turn will come.</p>
+      </div>
+    </div>
+
+    <!-- Inline pull-quote from a real patient -->
+    <blockquote class="reveal" style="margin-top:3rem; padding:1.75rem 2rem; background:var(--color-card-bg); border-radius:var(--radius-md); border-left:3px solid var(--color-gold); max-width:680px;">
+      <p style="font-family:var(--font-display); font-size:1.15rem; font-style:italic; color:var(--color-text); line-height:1.7;">"Cosmodont is my go-to clinic for any minor to major dental emergency. Doctors here provide the kind of assurance that every patient needs."</p>
+      <footer style="margin-top:0.75rem; font-size:0.8rem; color:var(--color-text-muted); font-weight:500;">— Zapan Chawla &nbsp;·&nbsp; <span style="color:var(--color-gold);">★★★★★</span> Google Review</footer>
+    </blockquote>
+  </div>
+</section>
+
+
+<!-- ═══ SECTION: SERVICES ═══ -->
+<section class="services-section section" id="services" aria-labelledby="servicesHeading">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="section-tag">What We Specialise In</span>
+      <h2 class="display-lg" id="servicesHeading">Every smile is different.<br>Every treatment is personal.</h2>
+    </div>
+    <!-- Populated dynamically from CONFIG.services in app.js -->
+    <div class="services-grid" id="servicesGrid"></div>
+    <p class="services-bottom-cta reveal">
+      Not sure what you need? <a href="#contact">Book a free consultation →</a>
+    </p>
+  </div>
+</section>
+
+
+<!-- ═══ SECTION: DOCTORS ═══ -->
+<section class="doctors-section section" aria-labelledby="doctorsHeading">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="section-tag">The Hands Behind Your Smile</span>
+      <h2 class="display-lg" id="doctorsHeading">You're not just a patient here.</h2>
+    </div>
+    <!-- Populated dynamically from CONFIG.doctors in app.js -->
+    <div class="doctors-grid" id="doctorsGrid"></div>
+  </div>
+</section>
+
+
+<!-- ═══ SECTION: TESTIMONIALS ═══ -->
+<section class="testimonials-section" aria-labelledby="testimonialHeading">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">In Their Own Words</span>
+      <h2 class="display-lg" id="testimonialHeading">What our patients<br>actually say.</h2>
+      <div class="testimonials-meta">
+        <span class="stars-inline">★★★★★</span>
+        <span>5-Star rated on Google &nbsp;·&nbsp; 100+ reviews</span>
+      </div>
+    </div>
+    <!-- Populated dynamically from CONFIG.testimonials in app.js -->
+    <div class="testimonials-grid" id="testimonialsGrid"></div>
+  </div>
+</section>
+
+
+<!-- ═══ SECTION: SMILE GALLERY ═══ -->
+<section class="gallery-section section" id="gallery" aria-labelledby="galleryHeading">
+  <div class="container">
+    <div class="section-header center reveal">
+      <span class="section-tag">Before &amp; After</span>
+      <h2 class="display-lg" id="galleryHeading">Real patients. Real results.</h2>
+      <p class="section-subtext">Every transformation starts with one conversation.</p>
+    </div>
+    <!-- Populated dynamically from CONFIG.gallery in app.js -->
+    <div class="gallery-grid" id="galleryGrid"></div>
+    <p class="gallery-notice">Patient consent obtained for all images displayed.</p>
+    <div class="gallery-cta reveal">
+      <a href="https://instagram.com" target="_blank" rel="noopener" class="btn btn-outline-dark">
+        See More Transformations on Instagram →
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ SECTION: CREDENTIALS / TRUST BAR ═══ -->
+<section class="credentials-section" aria-label="Trust credentials">
+  <div class="container">
+    <!-- Populated dynamically from CONFIG.credentials in app.js -->
+    <div class="credentials-row" id="credentialsRow"></div>
+  </div>
+</section>
+
+
+<!-- ═══ SECTION: FINANCING ═══ -->
+<section class="financing-section section" aria-labelledby="financingHeading">
+  <div class="container">
+    <div class="financing-grid">
+      <div>
+        <div class="reveal">
+          <span class="section-tag">No Reason to Wait</span>
+          <h2 class="display-lg" id="financingHeading">Your dream smile shouldn't be a financial decision.</h2>
+        </div>
+        <!-- Populated from CONFIG.financing.items in app.js -->
+        <div class="financing-list" id="financingList"></div>
+      </div>
+      <div class="financing-right reveal reveal-d2">
+        <h3 class="financing-right-title">Our Financing Partners</h3>
+        <!-- Populated from CONFIG.financing.partners in app.js -->
+        <div class="partner-logos" id="partnerLogos"></div>
+        <p class="insurance-label">Insurance Accepted</p>
+        <!-- Populated from CONFIG.financing.insurance in app.js -->
+        <div class="insurance-tags" id="insuranceTags"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ SECTION: BOOK APPOINTMENT ═══ -->
+<section class="book-section" id="contact" aria-labelledby="bookHeading">
+  <div class="book-inner">
+    <h2 class="book-headline reveal" id="bookHeading">Ready for a smile<br>you're proud of?</h2>
+    <p class="book-subtext reveal reveal-d1">Free consultation. No pressure. Just a conversation.</p>
+
+    <!--
+      FORM: The submit action is handled by CONFIG.formSubmitHandler in config.js.
+      To change how submissions are processed (WhatsApp, Formspree, GrahakBot),
+      edit that function — no changes needed here.
+    -->
+    <form class="book-form reveal reveal-d2" id="bookForm" action="" novalidate>
+      <div class="form-group">
+        <label class="form-label" for="fname">Your Name</label>
+        <input class="form-input" type="text" id="fname" name="name"
+               placeholder="e.g. Ritu Sharma" required autocomplete="given-name">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="fphone">Phone Number</label>
+        <input class="form-input" type="tel" id="fphone" name="phone"
+               placeholder="+91 98765 43210" required autocomplete="tel">
+      </div>
+      <div class="form-group span-full">
+        <label class="form-label" for="fservice">Preferred Service</label>
+        <select class="form-select" id="fservice" name="service" required>
+          <option value="" disabled selected>Select a service…</option>
+          <option value="Clear Aligners">Clear Aligners</option>
+          <option value="Dental Implants">Dental Implants</option>
+          <option value="Crowns &amp; Caps">Crowns &amp; Caps</option>
+          <option value="Orthodontics">Orthodontics</option>
+          <option value="General Checkup">General Checkup</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <button type="submit" class="form-submit">Request My Free Consultation →</button>
+    </form>
+
+    <div class="book-divider reveal reveal-d3"><span>or call us directly</span></div>
+    <!-- Populated from CONFIG.clinic.phones in app.js -->
+    <div class="book-phones reveal reveal-d4" id="bookPhones"></div>
+  </div>
+</section>
+
+
+<!-- ═══ SECTION: FOOTER ═══ -->
+<footer class="footer" aria-label="Site footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Col 1: Brand -->
+      <div>
+        <div class="footer-logo-wrap">
+          <a href="#home" class="footer-logo">Cosmodont<span class="logo-dot">.</span></a>
+        </div>
+        <p class="footer-tagline">"Where Smiles Are Crafted With Care"</p>
+        <div class="footer-socials">
+          <a href="https://instagram.com" target="_blank" rel="noopener"
+             class="footer-social-link" aria-label="Instagram">In</a>
+          <a href="https://facebook.com" target="_blank" rel="noopener"
+             class="footer-social-link" aria-label="Facebook">Fb</a>
+        </div>
+      </div>
+
+      <!-- Col 2: Quick Links -->
+      <div>
+        <p class="footer-col-title">Quick Links</p>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#gallery">Smile Gallery</a></li>
+          <li><a href="#contact">Book Appointment</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Services — populated from CONFIG.services in app.js -->
+      <div>
+        <p class="footer-col-title">Services</p>
+        <ul class="footer-links" id="footerServices"></ul>
+      </div>
+
+      <!-- Col 4: Hours + Contact -->
+      <div>
+        <p class="footer-col-title">Clinic Hours</p>
+        <div class="footer-hours" style="margin-bottom:1.5rem;">
+          <div class="footer-hour-row">
+            <span class="footer-hour-day">Mon – Thu</span>
+            <span>11:00 AM – 9:00 PM</span>
+          </div>
+          <div class="footer-hour-row">
+            <span class="footer-hour-day">Fri – Sun</span>
+            <span>By Appointment</span>
+          </div>
+        </div>
+        <p class="footer-col-title">Contact</p>
+        <!-- Populated from CONFIG.clinic in app.js -->
+        <div class="footer-contacts" id="footerContact"></div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        © 2025 Cosmodont Dental Clinic, Lucknow.
+        Website by <a href="#" target="_blank" rel="noopener">Bingemind</a>.
+      </p>
+      <span class="footer-iso">ISO 9001:2015 CERTIFIED</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══ WHATSAPP FLOATING BUTTON ═══ -->
+<!-- DEVELOPER: Replace this href with your GrahakBot widget trigger URL
+     when integrating automated chat. The wa.me link is a direct fallback. -->
+<a class="whatsapp-fab"
+   href="https://wa.me/917992074028?text=Hello%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%20Cosmodont%20Dental%20Clinic."
+   target="_blank"
+   rel="noopener"
+   aria-label="Chat on WhatsApp">
+  <span class="whatsapp-tooltip">Chat with us</span>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+
+<!-- Scripts — config.js must load before app.js -->
+<script src="config.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

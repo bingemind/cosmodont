@@ -3,418 +3,589 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Cosmodont Dental Clinic — Premium dental care in Gomti Nagar, Lucknow. ISO 9001:2015 certified. Lucknow's largest clear aligners provider. Painless dentistry, implants, cosmetic treatments.">
-<meta name="theme-color" content="#FAF7F2">
-<title>Cosmodont Dental Clinic | Where Smiles Are Crafted With Care</title>
+<meta name="description" content="Cosmodont Dental Clinic — Design Direction Preview by Bingemind">
+<title>Cosmodont · Design Directions — Bingemind</title>
 
-<!--
-╔══════════════════════════════════════════════════════════════════╗
-║            COSMODONT DENTAL CLINIC — index.html                  ║
-║                                                                  ║
-║  PROJECT FILE STRUCTURE                                          ║
-║  ├── index.html   ← page structure (this file)                   ║
-║  ├── style.css    ← all visual styling + CSS variables           ║
-║  ├── config.js    ← all clinic content (edit this for updates)   ║
-║  └── app.js       ← all interactivity (navbar, form, animations) ║
-║                                                                  ║
-║  DEVELOPER NOTES: How to update this site                        ║
-║                                                                  ║
-║  1. CONTENT CHANGES — Edit config.js only. Doctor names,         ║
-║     phone numbers, hours, services, testimonials — all live      ║
-║     there. No HTML or JS changes required.                       ║
-║                                                                  ║
-║  2. COLOUR / FONT CHANGES — Edit the :root {} block at the       ║
-║     top of style.css. Change --color-gold once and it updates    ║
-║     everywhere. Same for fonts, spacing, shadows.                ║
-║                                                                  ║
-║  3. LAYOUT / SECTION CHANGES — Edit index.html. Each section     ║
-║     is wrapped in a  ═══ SECTION: NAME ═══  comment for   ║
-║     easy navigation. Use Ctrl+F to jump to any section.          ║
-║                                                                  ║
-║  4. IMAGE REPLACEMENT — Find <div> tags with data-image-id="..."  ║
-║     Replace each div with an <img> tag pointing to the real      ║
-║     image file. The data-image-id tells you which image          ║
-║     goes where (e.g. data-image-id="doctor-utkarsh").            ║
-║                                                                  ║
-║  5. FORM INTEGRATION — Open config.js and find                   ║
-║     formSubmitHandler. Follow the OPTION A / B / C comments      ║
-║     to connect Formspree, Netlify, GrahakBot, or any backend.    ║
-╚══════════════════════════════════════════════════════════════════╝
--->
-
-<!-- Google Fonts: Cormorant Garamond (display) + DM Sans (body) -->
+<!-- Google Fonts: Syne (display) + DM Sans (body) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
 
-<!-- Stylesheet -->
-<link rel="stylesheet" href="style.css">
+<style>
+
+/* ── Variables ────────────────────────────────────────────────── */
+:root {
+  --bg:      #0C0C0E;
+  --surface: #141418;
+  --border:  #222228;
+  --gold:    #F59E0B;
+  --text:    #F0F0F0;
+  --muted:   #666672;
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+
+  /* Per-theme accent colors */
+  --c-gold:  #C9A84C;
+  --c-green: #10B981;
+  --c-terra: #CD8561;
+}
+
+/* ── Reset ────────────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  /* Subtle dot-grid texture */
+  background-image:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,158,11,0.05) 0%, transparent 55%),
+    radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 100% 100%, 28px 28px;
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Grain overlay ────────────────────────────────────────────── */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.032;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+/* ── Layout wrapper ───────────────────────────────────────────── */
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+
+/* ── Header ───────────────────────────────────────────────────── */
+header { padding-top: 2rem; }
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.5rem;
+}
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  user-select: none;
+}
+.logo-w { color: var(--text); }
+.logo-g { color: var(--gold); }
+
+.header-badge {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0.3rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Thin gold separator below header */
+.separator {
+  height: 1px;
+  /* Extend full viewport width while inside the constrained wrap */
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(245,158,11,0.08) 10%,
+    var(--gold) 30%,
+    rgba(245,158,11,0.15) 70%,
+    transparent 100%
+  );
+}
+
+/* ── Hero ─────────────────────────────────────────────────────── */
+.hero {
+  text-align: center;
+  padding: 5.5rem 0 4.5rem;
+  animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+.hero-label::before,
+.hero-label::after {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.45;
+}
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6.5vw, 5rem);
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.5rem;
+}
+.hero-sub {
+  font-size: 0.97rem;
+  color: var(--muted);
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+/* ── Cards grid ───────────────────────────────────────────────── */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding-bottom: 6rem;
+}
+
+/* ── Card ─────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition:
+    transform  0.42s cubic-bezier(0.34, 1.42, 0.64, 1),
+    box-shadow 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.3s ease;
+  /* Staggered entrance */
+  opacity: 0;
+  animation: cardIn 0.65s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.card:nth-child(1) { animation-delay: 0.15s; }
+.card:nth-child(2) { animation-delay: 0.28s; }
+.card:nth-child(3) { animation-delay: 0.41s; }
+
+/* Per-theme hover glow */
+.card-gold:hover {
+  transform: translateY(-11px);
+  box-shadow: 0 24px 64px rgba(201,168,76,0.16), 0 6px 20px rgba(0,0,0,0.35);
+  border-color: rgba(201,168,76,0.28);
+}
+.card-noir:hover {
+  transform: translateY(-11px);
+  box-shadow: 0 24px 64px rgba(16,185,129,0.13), 0 6px 20px rgba(0,0,0,0.35);
+  border-color: rgba(16,185,129,0.22);
+}
+.card-blush:hover {
+  transform: translateY(-11px);
+  box-shadow: 0 24px 64px rgba(205,133,97,0.16), 0 6px 20px rgba(0,0,0,0.35);
+  border-color: rgba(205,133,97,0.26);
+}
+
+/* ── Swatch ───────────────────────────────────────────────────── */
+.swatch {
+  height: 196px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: filter 0.4s ease;
+}
+.card:hover .swatch { filter: brightness(1.07) saturate(1.05); }
+
+.swatch-gold  { background: linear-gradient(145deg, #FAF7F2 0%, #EFE4CC 55%, #E3D4B0 100%); }
+.swatch-noir  { background: linear-gradient(145deg, #0A0F0D 0%, #0F1A15 55%, #0B1410 100%); }
+.swatch-blush { background: linear-gradient(145deg, #F9F5F0 0%, #EFE6D8 55%, #E8D9C6 100%); }
+
+/* Large watermark number */
+.swatch-num {
+  position: absolute;
+  right: -0.05em;
+  bottom: -0.18em;
+  font-family: var(--font-display);
+  font-size: 9rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  user-select: none;
+  pointer-events: none;
+  transition: transform 0.4s ease;
+}
+.card:hover .swatch-num { transform: scale(1.04) translateY(-3px); }
+
+.swatch-gold  .swatch-num { color: rgba(180,145,50,0.13); }
+.swatch-noir  .swatch-num { color: rgba(16,185,129,0.09); }
+.swatch-blush .swatch-num { color: rgba(190,110,70,0.13); }
+
+/* Decorative mini UI bars (hint at the theme style) */
+.swatch-bars {
+  position: absolute;
+  top: 1.4rem;
+  left: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.bar {
+  height: 3.5px;
+  border-radius: 99px;
+  transition: width 0.35s ease, opacity 0.35s ease;
+}
+.swatch-gold  .bar { background: #B8922A; }
+.swatch-noir  .bar { background: #10B981; }
+.swatch-blush .bar { background: #C07850; }
+.bar-1 { width: 72px; opacity: 0.35; }
+.bar-2 { width: 48px; opacity: 0.22; }
+.bar-3 { width: 60px; opacity: 0.18; }
+.card:hover .bar-1 { width: 88px; opacity: 0.5; }
+.card:hover .bar-2 { width: 60px; opacity: 0.34; }
+.card:hover .bar-3 { width: 76px; opacity: 0.26; }
+
+/* Swatch type indicator (top-right corner) */
+.swatch-type-pill {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-radius: 99px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.swatch-gold  .swatch-type-pill { background: rgba(180,145,50,0.18); color: rgba(180,145,50,0.9); border: 1px solid rgba(180,145,50,0.2); }
+.swatch-noir  .swatch-type-pill { background: rgba(16,185,129,0.12); color: rgba(16,185,129,0.8); border: 1px solid rgba(16,185,129,0.15); }
+.swatch-blush .swatch-type-pill { background: rgba(190,110,70,0.16); color: rgba(190,110,70,0.85); border: 1px solid rgba(190,110,70,0.18); }
+
+/* ── Card body ────────────────────────────────────────────────── */
+.card-body {
+  padding: 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  margin-bottom: 0.9rem;
+  width: fit-content;
+}
+.badge-gold  { color: var(--c-gold);  background: rgba(201,168,76,0.1);  border: 1px solid rgba(201,168,76,0.2);  }
+.badge-noir  { color: var(--c-green); background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.18); }
+.badge-blush { color: var(--c-terra); background: rgba(205,133,97,0.1);  border: 1px solid rgba(205,133,97,0.2);  }
+
+.card-name {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.025em;
+  margin-bottom: 0.2rem;
+  line-height: 1.15;
+}
+.card-tagline {
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+  margin-bottom: 1rem;
+}
+.card-desc {
+  font-size: 0.86rem;
+  color: rgba(240,240,240,0.48);
+  line-height: 1.72;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+.card-pills {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.4rem;
+}
+.pill {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.035);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.card:hover .pill { background: rgba(255,255,255,0.06); color: rgba(240,240,240,0.7); }
+
+.card-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.78rem 1.25rem;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  background: var(--gold);
+  color: #0C0C0E;
+  border: none;
+  cursor: pointer;
+  transition: background 0.22s ease, color 0.22s ease, transform 0.22s ease;
+  text-decoration: none;
+  width: 100%;
+}
+.card-cta:hover {
+  background: var(--text);
+  color: #0C0C0E;
+  transform: translateY(-1px);
+}
+/* Arrow nudge on hover */
+.card-cta .arrow { display: inline-block; transition: transform 0.22s ease; }
+.card-cta:hover .arrow { transform: translateX(3px); }
+
+/* ── Footer ───────────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 0 2rem;
+}
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.foot-text {
+  font-size: 0.7rem;
+  color: rgba(102,102,114,0.6);
+  letter-spacing: 0.02em;
+}
+.foot-text a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.foot-text a:hover { color: var(--gold); }
+
+/* ── Animations ───────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .cards {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+  .swatch { height: 160px; }
+  .swatch-num { font-size: 7rem; }
+}
+@media (max-width: 540px) {
+  .wrap { padding: 0 1.25rem; }
+  .hero { padding: 3.5rem 0 3rem; }
+  .header-badge { display: none; }
+  .hero-headline { letter-spacing: -0.03em; }
+}
+
+</style>
 </head>
-
 <body>
 
-<!-- ═══ SECTION: NAVBAR ═══ -->
-<nav class="navbar" id="navbar" aria-label="Main navigation">
-  <div class="container">
-    <div class="navbar-inner">
-      <a href="#home" class="navbar-logo" aria-label="Cosmodont Dental Clinic">
-        Cosmodont<span class="logo-dot">.</span>
-      </a>
-      <ul class="navbar-links" role="list">
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#gallery">Smile Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="navbar-book">
-        <a href="#contact" class="btn btn-gold">Book Appointment</a>
+<!-- Grain texture overlay -->
+<div class="grain" aria-hidden="true"></div>
+
+<div class="wrap">
+
+  <!-- ═══ HEADER ═══ -->
+  <header>
+    <div class="header-row">
+      <div class="logo" aria-label="Bingemind">
+        <span class="logo-w">Binge</span><span class="logo-g">mind</span>
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <span class="header-badge">Client Preview &nbsp;·&nbsp; Cosmodont Dental Clinic</span>
     </div>
-  </div>
-</nav>
+  </header>
+  <div class="separator"></div>
 
-<!-- Mobile Menu Overlay -->
-<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
-  <a href="#home"     onclick="closeMobileMenu()">Home</a>
-  <a href="#services" onclick="closeMobileMenu()">Services</a>
-  <a href="#about"    onclick="closeMobileMenu()">About</a>
-  <a href="#gallery"  onclick="closeMobileMenu()">Smile Gallery</a>
-  <a href="#contact"  onclick="closeMobileMenu()">Contact</a>
-  <a href="#contact" class="btn btn-gold" onclick="closeMobileMenu()">Book Appointment</a>
-  <span class="mobile-nav-iso">ISO 9001:2015 Certified</span>
-</nav>
-
-
-<!-- ═══ SECTION: HERO ═══ -->
-<section class="hero" id="home" aria-label="Hero">
-  <!-- Floating abstract dental shapes — purely decorative -->
-  <div class="hero-shapes" aria-hidden="true">
-    <!-- Stylised tooth outline -->
-    <svg class="hero-shape hs-1" viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M50 8C28 8 12 24 12 44c0 12 4 22 10 30l8 50c1 5 4 8 8 8s6-3 7-6l5-20 5 20c1 3 3 6 7 6s7-3 8-8l8-50c6-8 10-18 10-30C88 24 72 8 50 8z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-      <path d="M35 30 Q50 22 65 30" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-    </svg>
-    <!-- Smile arc -->
-    <svg class="hero-shape hs-2" viewBox="0 0 120 65" fill="none">
-      <path d="M8 12 Q60 85 112 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-      <circle cx="8"   cy="12" r="4" fill="currentColor" opacity="0.5"/>
-      <circle cx="112" cy="12" r="4" fill="currentColor" opacity="0.5"/>
-    </svg>
-    <!-- Small tooth -->
-    <svg class="hero-shape hs-3" viewBox="0 0 60 80" fill="none">
-      <path d="M30 5C18 5 8 14 8 26c0 7 2 13 6 18l5 30c1 3 3 4 5 4s3-2 4-4l2-10 2 10c1 2 2 4 4 4s4-1 5-4l5-30c4-5 6-11 6-18C52 14 42 5 30 5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-    </svg>
-    <!-- Large faint dashed arc -->
-    <svg class="hero-shape hs-4" viewBox="0 0 200 100" fill="none">
-      <path d="M10 80 Q100 -30 190 80" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 8"/>
-    </svg>
-    <!-- Dot cluster -->
-    <svg class="hero-shape hs-5" viewBox="0 0 50 50" fill="currentColor">
-      <circle cx="10" cy="10" r="5"/>
-      <circle cx="30" cy="10" r="3.5"/>
-      <circle cx="20" cy="28" r="4"/>
-      <circle cx="40" cy="32" r="2.5"/>
-    </svg>
-  </div>
-
-  <div class="container">
-    <div class="hero-content">
-      <p class="hero-eyebrow" id="heroEyebrow">Gomti Nagar, Lucknow &nbsp;·&nbsp; ISO 9001:2015 Certified</p>
-      <h1 class="hero-headline">
-        <span class="hero-line-1" id="heroLine1">Your Smile.</span>
-        <span class="hero-line-2" id="heroLine2">Our <em>Life's Work.</em></span>
-      </h1>
-      <p class="hero-subtext" id="heroSubtext">
-        Lucknow's most trusted dental clinic — ISO certified, painless, and built entirely around you.
-      </p>
-      <div class="hero-ctas" id="heroCtas">
-        <a href="#contact" class="btn btn-gold">Book a Consultation</a>
-        <a href="#gallery" class="btn btn-outline-dark">View Our Work</a>
-      </div>
-      <div class="trust-bar" id="trustBar">
-        <span class="trust-chip"><span class="trust-chip-icon">⭐</span>5-Star Rated</span>
-        <span class="trust-chip"><span class="trust-chip-icon">🏅</span>ISO 9001:2015</span>
-        <span class="trust-chip"><span class="trust-chip-icon">🦷</span>Largest Aligner Provider in UP</span>
-        <span class="trust-chip"><span class="trust-chip-icon">😊</span>100+ Happy Patients</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══ SECTION: WHY COSMODONT ═══ -->
-<section class="why-section section" id="about" aria-labelledby="whyHeading">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-tag">The Cosmodont Difference</span>
-      <h2 class="display-lg" id="whyHeading">A dental clinic that feels<br>nothing like one.</h2>
-    </div>
-    <div class="why-grid">
-      <div class="why-card reveal reveal-d1">
-        <div class="why-icon">🏛️</div>
-        <h3 class="why-title">Café-Like Waiting Area</h3>
-        <p class="why-text">Arrive early on purpose. Free WiFi, comfortable seating, and none of that sterile waiting-room anxiety that makes your heart race before you even sit down.</p>
-      </div>
-      <div class="why-card reveal reveal-d2">
-        <div class="why-icon">🧪</div>
-        <h3 class="why-title">ISO Certified Hygiene</h3>
-        <p class="why-text">Strict 3-month audits. A dedicated sterilization protocol. Every instrument, every time — because your safety isn't something we treat as optional.</p>
-      </div>
-      <div class="why-card reveal reveal-d3">
-        <div class="why-icon">👨‍⚕️</div>
-        <h3 class="why-title">Doctors Who Don't Oversell</h3>
-        <p class="why-text">We explain everything upfront. We recommend only what you actually need. Your trust matters more to us than a bigger bill — and our patients notice.</p>
-      </div>
-      <div class="why-card reveal reveal-d4">
-        <div class="why-icon">📅</div>
-        <h3 class="why-title">Appointments That Run On Time</h3>
-        <p class="why-text">Your time is respected here. Separate areas for waiting, consultation, and surgery mean you're never stuck wondering when your turn will come.</p>
-      </div>
-    </div>
-
-    <!-- Inline pull-quote from a real patient -->
-    <blockquote class="reveal" style="margin-top:3rem; padding:1.75rem 2rem; background:var(--color-card-bg); border-radius:var(--radius-md); border-left:3px solid var(--color-gold); max-width:680px;">
-      <p style="font-family:var(--font-display); font-size:1.15rem; font-style:italic; color:var(--color-text); line-height:1.7;">"Cosmodont is my go-to clinic for any minor to major dental emergency. Doctors here provide the kind of assurance that every patient needs."</p>
-      <footer style="margin-top:0.75rem; font-size:0.8rem; color:var(--color-text-muted); font-weight:500;">— Zapan Chawla &nbsp;·&nbsp; <span style="color:var(--color-gold);">★★★★★</span> Google Review</footer>
-    </blockquote>
-  </div>
-</section>
-
-
-<!-- ═══ SECTION: SERVICES ═══ -->
-<section class="services-section section" id="services" aria-labelledby="servicesHeading">
-  <div class="container">
-    <div class="section-header center reveal">
-      <span class="section-tag">What We Specialise In</span>
-      <h2 class="display-lg" id="servicesHeading">Every smile is different.<br>Every treatment is personal.</h2>
-    </div>
-    <!-- Populated dynamically from CONFIG.services in app.js -->
-    <div class="services-grid" id="servicesGrid"></div>
-    <p class="services-bottom-cta reveal">
-      Not sure what you need? <a href="#contact">Book a free consultation →</a>
+  <!-- ═══ HERO ═══ -->
+  <div class="hero">
+    <div class="hero-label">Three Design Directions</div>
+    <h1 class="hero-headline">Choose your brand.</h1>
+    <p class="hero-sub">
+      Each version is a complete demo — same content, different personality.
+      Open each one and decide what feels like Cosmodont.
     </p>
   </div>
-</section>
 
+  <!-- ═══ CARDS ═══ -->
+  <div class="cards">
 
-<!-- ═══ SECTION: DOCTORS ═══ -->
-<section class="doctors-section section" aria-labelledby="doctorsHeading">
-  <div class="container">
-    <div class="section-header center reveal">
-      <span class="section-tag">The Hands Behind Your Smile</span>
-      <h2 class="display-lg" id="doctorsHeading">You're not just a patient here.</h2>
-    </div>
-    <!-- Populated dynamically from CONFIG.doctors in app.js -->
-    <div class="doctors-grid" id="doctorsGrid"></div>
-  </div>
-</section>
-
-
-<!-- ═══ SECTION: TESTIMONIALS ═══ -->
-<section class="testimonials-section" aria-labelledby="testimonialHeading">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="section-tag">In Their Own Words</span>
-      <h2 class="display-lg" id="testimonialHeading">What our patients<br>actually say.</h2>
-      <div class="testimonials-meta">
-        <span class="stars-inline">★★★★★</span>
-        <span>5-Star rated on Google &nbsp;·&nbsp; 100+ reviews</span>
-      </div>
-    </div>
-    <!-- Populated dynamically from CONFIG.testimonials in app.js -->
-    <div class="testimonials-grid" id="testimonialsGrid"></div>
-  </div>
-</section>
-
-
-<!-- ═══ SECTION: SMILE GALLERY ═══ -->
-<section class="gallery-section section" id="gallery" aria-labelledby="galleryHeading">
-  <div class="container">
-    <div class="section-header center reveal">
-      <span class="section-tag">Before &amp; After</span>
-      <h2 class="display-lg" id="galleryHeading">Real patients. Real results.</h2>
-      <p class="section-subtext">Every transformation starts with one conversation.</p>
-    </div>
-    <!-- Populated dynamically from CONFIG.gallery in app.js -->
-    <div class="gallery-grid" id="galleryGrid"></div>
-    <p class="gallery-notice">Patient consent obtained for all images displayed.</p>
-    <div class="gallery-cta reveal">
-      <a href="https://instagram.com" target="_blank" rel="noopener" class="btn btn-outline-dark">
-        See More Transformations on Instagram →
-      </a>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══ SECTION: CREDENTIALS / TRUST BAR ═══ -->
-<section class="credentials-section" aria-label="Trust credentials">
-  <div class="container">
-    <!-- Populated dynamically from CONFIG.credentials in app.js -->
-    <div class="credentials-row" id="credentialsRow"></div>
-  </div>
-</section>
-
-
-<!-- ═══ SECTION: FINANCING ═══ -->
-<section class="financing-section section" aria-labelledby="financingHeading">
-  <div class="container">
-    <div class="financing-grid">
-      <div>
-        <div class="reveal">
-          <span class="section-tag">No Reason to Wait</span>
-          <h2 class="display-lg" id="financingHeading">Your dream smile shouldn't be a financial decision.</h2>
+    <!-- Card 1 · Warm Ivory / Gold -->
+    <div class="card card-gold"
+         onclick="window.open('cosmodont-index.html','_blank')"
+         role="button"
+         tabindex="0"
+         aria-label="Open Warm Ivory demo"
+         onkeydown="if(event.key==='Enter')window.open('cosmodont-index.html','_blank')">
+      <div class="swatch swatch-gold">
+        <div class="swatch-bars" aria-hidden="true">
+          <div class="bar bar-1"></div>
+          <div class="bar bar-2"></div>
+          <div class="bar bar-3"></div>
         </div>
-        <!-- Populated from CONFIG.financing.items in app.js -->
-        <div class="financing-list" id="financingList"></div>
+        <span class="swatch-type-pill">Serif</span>
+        <span class="swatch-num" aria-hidden="true">01</span>
       </div>
-      <div class="financing-right reveal reveal-d2">
-        <h3 class="financing-right-title">Our Financing Partners</h3>
-        <!-- Populated from CONFIG.financing.partners in app.js -->
-        <div class="partner-logos" id="partnerLogos"></div>
-        <p class="insurance-label">Insurance Accepted</p>
-        <!-- Populated from CONFIG.financing.insurance in app.js -->
-        <div class="insurance-tags" id="insuranceTags"></div>
+      <div class="card-body">
+        <span class="card-badge badge-gold">01 &nbsp;·&nbsp; Gold</span>
+        <h2 class="card-name">Warm Ivory</h2>
+        <p class="card-tagline">Elegant &nbsp;·&nbsp; Serif &nbsp;·&nbsp; Premium</p>
+        <p class="card-desc">
+          Classic luxury feel. Cormorant Garamond typography,
+          warm gold accents, refined spacing. Timeless and trustworthy.
+        </p>
+        <div class="card-pills">
+          <span class="pill">Serif</span>
+          <span class="pill">Light</span>
+          <span class="pill">Elegant</span>
+        </div>
+        <a href="cosmodont-index.html"
+           target="_blank"
+           rel="noopener"
+           class="card-cta"
+           onclick="event.stopPropagation()">
+          Open Demo <span class="arrow">→</span>
+        </a>
       </div>
     </div>
-  </div>
-</section>
 
-
-<!-- ═══ SECTION: BOOK APPOINTMENT ═══ -->
-<section class="book-section" id="contact" aria-labelledby="bookHeading">
-  <div class="book-inner">
-    <h2 class="book-headline reveal" id="bookHeading">Ready for a smile<br>you're proud of?</h2>
-    <p class="book-subtext reveal reveal-d1">Free consultation. No pressure. Just a conversation.</p>
-
-    <!--
-      FORM: The submit action is handled by CONFIG.formSubmitHandler in config.js.
-      To change how submissions are processed (WhatsApp, Formspree, GrahakBot),
-      edit that function — no changes needed here.
-    -->
-    <form class="book-form reveal reveal-d2" id="bookForm" action="" novalidate>
-      <div class="form-group">
-        <label class="form-label" for="fname">Your Name</label>
-        <input class="form-input" type="text" id="fname" name="name"
-               placeholder="e.g. Ritu Sharma" required autocomplete="given-name">
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="fphone">Phone Number</label>
-        <input class="form-input" type="tel" id="fphone" name="phone"
-               placeholder="+91 98765 43210" required autocomplete="tel">
-      </div>
-      <div class="form-group span-full">
-        <label class="form-label" for="fservice">Preferred Service</label>
-        <select class="form-select" id="fservice" name="service" required>
-          <option value="" disabled selected>Select a service…</option>
-          <option value="Clear Aligners">Clear Aligners</option>
-          <option value="Dental Implants">Dental Implants</option>
-          <option value="Crowns &amp; Caps">Crowns &amp; Caps</option>
-          <option value="Orthodontics">Orthodontics</option>
-          <option value="General Checkup">General Checkup</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
-      <button type="submit" class="form-submit">Request My Free Consultation →</button>
-    </form>
-
-    <div class="book-divider reveal reveal-d3"><span>or call us directly</span></div>
-    <!-- Populated from CONFIG.clinic.phones in app.js -->
-    <div class="book-phones reveal reveal-d4" id="bookPhones"></div>
-  </div>
-</section>
-
-
-<!-- ═══ SECTION: FOOTER ═══ -->
-<footer class="footer" aria-label="Site footer">
-  <div class="container">
-    <div class="footer-grid">
-
-      <!-- Col 1: Brand -->
-      <div>
-        <div class="footer-logo-wrap">
-          <a href="#home" class="footer-logo">Cosmodont<span class="logo-dot">.</span></a>
+    <!-- Card 2 · Clinical Dark / Noir -->
+    <div class="card card-noir"
+         onclick="window.open('cosmodont-theme2.html','_blank')"
+         role="button"
+         tabindex="0"
+         aria-label="Open Clinical Dark demo"
+         onkeydown="if(event.key==='Enter')window.open('cosmodont-theme2.html','_blank')">
+      <div class="swatch swatch-noir">
+        <div class="swatch-bars" aria-hidden="true">
+          <div class="bar bar-1"></div>
+          <div class="bar bar-2"></div>
+          <div class="bar bar-3"></div>
         </div>
-        <p class="footer-tagline">"Where Smiles Are Crafted With Care"</p>
-        <div class="footer-socials">
-          <a href="https://instagram.com" target="_blank" rel="noopener"
-             class="footer-social-link" aria-label="Instagram">In</a>
-          <a href="https://facebook.com" target="_blank" rel="noopener"
-             class="footer-social-link" aria-label="Facebook">Fb</a>
+        <span class="swatch-type-pill">Bold</span>
+        <span class="swatch-num" aria-hidden="true">02</span>
+      </div>
+      <div class="card-body">
+        <span class="card-badge badge-noir">02 &nbsp;·&nbsp; Noir</span>
+        <h2 class="card-name">Clinical Dark</h2>
+        <p class="card-tagline">Precise &nbsp;·&nbsp; Modern &nbsp;·&nbsp; Bold</p>
+        <p class="card-desc">
+          Dark clinical luxury. Playfair Display on near-black,
+          emerald green accents. Confident and premium.
+        </p>
+        <div class="card-pills">
+          <span class="pill">Dark</span>
+          <span class="pill">Bold</span>
+          <span class="pill">Clinical</span>
         </div>
+        <a href="cosmodont-theme2.html"
+           target="_blank"
+           rel="noopener"
+           class="card-cta"
+           onclick="event.stopPropagation()">
+          Open Demo <span class="arrow">→</span>
+        </a>
       </div>
-
-      <!-- Col 2: Quick Links -->
-      <div>
-        <p class="footer-col-title">Quick Links</p>
-        <ul class="footer-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#gallery">Smile Gallery</a></li>
-          <li><a href="#contact">Book Appointment</a></li>
-        </ul>
-      </div>
-
-      <!-- Col 3: Services — populated from CONFIG.services in app.js -->
-      <div>
-        <p class="footer-col-title">Services</p>
-        <ul class="footer-links" id="footerServices"></ul>
-      </div>
-
-      <!-- Col 4: Hours + Contact -->
-      <div>
-        <p class="footer-col-title">Clinic Hours</p>
-        <div class="footer-hours" style="margin-bottom:1.5rem;">
-          <div class="footer-hour-row">
-            <span class="footer-hour-day">Mon – Thu</span>
-            <span>11:00 AM – 9:00 PM</span>
-          </div>
-          <div class="footer-hour-row">
-            <span class="footer-hour-day">Fri – Sun</span>
-            <span>By Appointment</span>
-          </div>
-        </div>
-        <p class="footer-col-title">Contact</p>
-        <!-- Populated from CONFIG.clinic in app.js -->
-        <div class="footer-contacts" id="footerContact"></div>
-      </div>
-
     </div>
 
-    <div class="footer-bottom">
-      <p class="footer-copy">
-        © 2025 Cosmodont Dental Clinic, Lucknow.
-        Website by <a href="#" target="_blank" rel="noopener">Bingemind</a>.
+    <!-- Card 3 · Soft Editorial / Blush -->
+    <div class="card card-blush"
+         onclick="window.open('cosmodont-theme3.html','_blank')"
+         role="button"
+         tabindex="0"
+         aria-label="Open Soft Editorial demo"
+         onkeydown="if(event.key==='Enter')window.open('cosmodont-theme3.html','_blank')">
+      <div class="swatch swatch-blush">
+        <div class="swatch-bars" aria-hidden="true">
+          <div class="bar bar-1"></div>
+          <div class="bar bar-2"></div>
+          <div class="bar bar-3"></div>
+        </div>
+        <span class="swatch-type-pill">Warm</span>
+        <span class="swatch-num" aria-hidden="true">03</span>
+      </div>
+      <div class="card-body">
+        <span class="card-badge badge-blush">03 &nbsp;·&nbsp; Blush</span>
+        <h2 class="card-name">Soft Editorial</h2>
+        <p class="card-tagline">Warm &nbsp;·&nbsp; Friendly &nbsp;·&nbsp; Approachable</p>
+        <p class="card-desc">
+          Soft editorial warmth. Fraunces serif, terracotta accents,
+          rounded cards. Welcoming without being clinical.
+        </p>
+        <div class="card-pills">
+          <span class="pill">Warm</span>
+          <span class="pill">Rounded</span>
+          <span class="pill">Editorial</span>
+        </div>
+        <a href="cosmodont-theme3.html"
+           target="_blank"
+           rel="noopener"
+           class="card-cta"
+           onclick="event.stopPropagation()">
+          Open Demo <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /cards -->
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="footer-row">
+      <p class="foot-text">
+        Prepared by <a href="https://bingemind.github.io" target="_blank" rel="noopener">Bingemind</a>
+        &nbsp;·&nbsp; bingemind.github.io
       </p>
-      <span class="footer-iso">ISO 9001:2015 CERTIFIED</span>
+      <p class="foot-text">For review purposes only &nbsp;·&nbsp; Cosmodont Dental Clinic</p>
     </div>
-  </div>
-</footer>
+  </footer>
 
-
-<!-- ═══ WHATSAPP FLOATING BUTTON ═══ -->
-<!-- DEVELOPER: Replace this href with your GrahakBot widget trigger URL
-     when integrating automated chat. The wa.me link is a direct fallback. -->
-<a class="whatsapp-fab"
-   href="https://wa.me/917992074028?text=Hello%2C%20I%27d%20like%20to%20book%20a%20consultation%20at%20Cosmodont%20Dental%20Clinic."
-   target="_blank"
-   rel="noopener"
-   aria-label="Chat on WhatsApp">
-  <span class="whatsapp-tooltip">Chat with us</span>
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
-
-
-<!-- Scripts — config.js must load before app.js -->
-<script src="config.js"></script>
-<script src="app.js"></script>
+</div><!-- /wrap -->
 
 </body>
 </html>
