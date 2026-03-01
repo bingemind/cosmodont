@@ -738,7 +738,6 @@
     footer { padding: 48px 20px 24px; }
 
     section { padding: 60px 20px; }
-    #proto-banner { font-size: 10px; letter-spacing: 0.5px; padding: 0 40px 0 10px; }
   }
 
   @media (max-width: 480px) {
@@ -753,49 +752,9 @@
     footer { padding: 40px 16px 24px; }
   }
 
-  /* ── PROTOTYPE BANNER ── */
-  #proto-banner {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 200;
-    height: 40px;
-    background: #1A1A2E;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'DM Sans', 'Jost', sans-serif;
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    color: #F59E0B;
-    transition: transform 0.35s ease, opacity 0.35s ease;
-  }
-  #proto-banner.dismissed {
-    transform: translateY(-100%);
-    opacity: 0;
-    pointer-events: none;
-  }
-  #proto-banner-close {
-    position: absolute;
-    right: 20px;
-    background: none;
-    border: none;
-    color: #F59E0B;
-    font-size: 16px;
-    cursor: pointer;
-    line-height: 1;
-    padding: 4px 8px;
-    opacity: 0.8;
-  }
-  #proto-banner-close:hover { opacity: 1; }
-  nav { top: 40px; transition: top 0.35s ease; }
 </style>
 </head>
 <body>
-
-<div id="proto-banner">
-  🔒 PROTOTYPE &nbsp;·&nbsp; For client review only &nbsp;·&nbsp; Not for public distribution &nbsp;·&nbsp; Prepared by Bingemind
-  <button id="proto-banner-close" aria-label="Dismiss banner" onclick="dismissProtoBanner()">✕</button>
-</div>
 
 
 <div class="theme-label">Theme 3 — Soft Editorial</div>
@@ -1092,16 +1051,9 @@
   <div class="footer-bottom">
     <span>© 2025 Cosmodont Dental Clinic</span>
     <span>Website by <a href="#">Bingemind</a></span>
-    <span style="font-size:11px;opacity:0.45;font-style:italic;">Prototype v1.0 · Prepared by Bingemind · For review purposes only</span>
   </div>
 </footer>
 
 
-<script>
-function dismissProtoBanner() {
-  document.getElementById('proto-banner').classList.add('dismissed');
-  document.querySelector('nav').style.top = '0';
-}
-</script>
 </body>
 </html>
