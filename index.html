@@ -395,6 +395,42 @@ footer {
 }
 .foot-text a:hover { color: var(--gold); }
 
+/* ── Prototype banner ─────────────────────────────────────────── */
+#proto-banner {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 10000;
+  height: 40px;
+  background: #1A1A2E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: #F59E0B;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+#proto-banner.dismissed {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+#proto-banner-close {
+  position: absolute;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #F59E0B;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px 8px;
+  opacity: 0.8;
+}
+#proto-banner-close:hover { opacity: 1; }
+body { padding-top: 40px; transition: padding-top 0.35s ease; }
+
 /* ── Animations ───────────────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -420,11 +456,17 @@ footer {
   .hero { padding: 3.5rem 0 3rem; }
   .header-badge { display: none; }
   .hero-headline { letter-spacing: -0.03em; }
+  #proto-banner { font-size: 10px; letter-spacing: 0.5px; padding: 0 40px 0 10px; }
 }
 
 </style>
 </head>
 <body>
+
+<div id="proto-banner">
+  🔒 PROTOTYPE &nbsp;·&nbsp; For client review only &nbsp;·&nbsp; Not for public distribution &nbsp;·&nbsp; Prepared by Bingemind
+  <button id="proto-banner-close" aria-label="Dismiss banner" onclick="dismissProtoBanner()">✕</button>
+</div>
 
 <!-- Grain texture overlay -->
 <div class="grain" aria-hidden="true"></div>
@@ -587,5 +629,12 @@ footer {
 
 </div><!-- /wrap -->
 
+
+<script>
+function dismissProtoBanner() {
+  document.getElementById('proto-banner').classList.add('dismissed');
+  document.body.style.paddingTop = '0';
+}
+</script>
 </body>
 </html>
