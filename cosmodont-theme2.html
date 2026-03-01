@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cosmodont — Theme 2: Clinical Luxury Dark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0A0F0D;
+    --surface: #111815;
+    --card: #161E1A;
+    --border: #1E2B25;
+    --accent: #4AE89A;
+    --accent-dim: #2A8F5E;
+    --gold: #C9A84C;
+    --text: #E8F0EC;
+    --text-muted: #7A9486;
+    --text-dim: #4A6558;
+    --display: 'Playfair Display', serif;
+    --body: 'Nunito Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(10,15,13,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--display);
+    font-size: 22px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .nav-logo span {
+    color: var(--accent);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 10px 28px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--body);
+    transition: all 0.3s;
+  }
+
+  .nav-cta:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 60px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(74,232,154,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 30%;
+    width: 1px; height: 200px;
+    background: linear-gradient(to bottom, transparent, var(--accent-dim), transparent);
+  }
+
+  .hero-left { padding-right: 80px; }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 32px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-h1 {
+    font-family: var(--display);
+    font-size: clamp(48px, 5vw, 72px);
+    line-height: 1.1;
+    font-weight: 400;
+    margin-bottom: 28px;
+    color: var(--text);
+  }
+
+  .hero-h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 48px;
+    max-width: 420px;
+    line-height: 1.8;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 64px;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    padding: 16px 36px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--body);
+    transition: all 0.3s;
+  }
+
+  .btn-primary:hover { background: #6AEDB0; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-muted);
+    border: none;
+    padding: 16px 0;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--body);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s;
+  }
+
+  .btn-ghost::after {
+    content: '→';
+    transition: transform 0.3s;
+  }
+
+  .btn-ghost:hover { color: var(--text); }
+  .btn-ghost:hover::after { transform: translateX(4px); }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+  }
+
+  .stat-item {}
+
+  .stat-num {
+    font-family: var(--display);
+    font-size: 32px;
+    color: var(--text);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+
+  .hero-right {
+    position: relative;
+    height: 600px;
+  }
+
+  .hero-card-main {
+    position: absolute;
+    top: 40px; right: 0;
+    width: 320px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 40px;
+  }
+
+  .hero-card-main::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 60px;
+    background: var(--accent);
+  }
+
+  .card-icon {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .card-title {
+    font-family: var(--display);
+    font-size: 20px;
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+
+  .card-text {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .hero-card-float {
+    position: absolute;
+    bottom: 80px; left: 0;
+    width: 240px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .float-icon {
+    width: 48px; height: 48px;
+    background: rgba(74,232,154,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .float-text { font-size: 12px; color: var(--text-muted); }
+  .float-num { font-family: var(--display); font-size: 22px; color: var(--accent); }
+
+  .hero-line {
+    position: absolute;
+    top: 50%; left: -40px;
+    width: 80px; height: 1px;
+    background: var(--border);
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 100px 60px; }
+
+  .section-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-tag::before {
+    content: '';
+    width: 20px; height: 1px;
+    background: var(--accent);
+  }
+
+  .section-h2 {
+    font-family: var(--display);
+    font-size: clamp(32px, 3.5vw, 52px);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 520px;
+    line-height: 1.8;
+  }
+
+  /* ── SERVICES ── */
+  .services { background: var(--surface); }
+
+  .services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 64px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .service-card {
+    background: var(--card);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+    cursor: pointer;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 40px;
+    width: 0; height: 2px;
+    background: var(--accent);
+    transition: width 0.4s;
+  }
+
+  .service-card:hover { background: #1A2420; }
+  .service-card:hover::after { width: calc(100% - 80px); }
+
+  .service-num {
+    font-family: var(--display);
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--border);
+    position: absolute;
+    top: 24px; right: 32px;
+    line-height: 1;
+  }
+
+  .service-icon { font-size: 28px; margin-bottom: 24px; }
+
+  .service-name {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+
+  .service-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: 24px;
+    text-decoration: none;
+  }
+
+  /* ── DOCTORS ── */
+  .doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 64px;
+  }
+
+  .doctor-card {
+    border: 1px solid var(--border);
+    padding: 48px 36px;
+    position: relative;
+  }
+
+  .doctor-avatar {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-dim), var(--border));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--display);
+    font-size: 24px;
+    color: var(--text);
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+
+  .doctor-name {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+
+  .doctor-role {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .doctor-quote {
+    font-style: italic;
+    font-family: var(--display);
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    border-left: 2px solid var(--border);
+    padding-left: 16px;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--surface); }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 64px;
+  }
+
+  .testimonial-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 36px;
+    position: relative;
+  }
+
+  .testimonial-card::before {
+    content: '"';
+    font-family: var(--display);
+    font-size: 80px;
+    color: var(--border);
+    position: absolute;
+    top: 16px; right: 24px;
+    line-height: 1;
+  }
+
+  .stars {
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .testimonial-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 24px;
+    font-style: italic;
+    font-family: var(--display);
+  }
+
+  .testimonial-author {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    padding: 100px 60px;
+  }
+
+  .cta-form { display: flex; flex-direction: column; gap: 16px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-input {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 16px 20px;
+    font-family: var(--body);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .form-input:focus { border-color: var(--accent); }
+  .form-input::placeholder { color: var(--text-dim); }
+
+  .form-select {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 16px 20px;
+    font-family: var(--body);
+    font-size: 14px;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .form-submit {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    padding: 18px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--body);
+    transition: background 0.3s;
+  }
+
+  .form-submit:hover { background: #6AEDB0; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 60px 60px 32px;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+
+  .footer-brand p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 20px;
+    max-width: 260px;
+    line-height: 1.8;
+  }
+
+  .footer-col h4 {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .footer-col ul { list-style: none; }
+
+  .footer-col li {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .footer-bottom a { color: var(--accent); text-decoration: none; }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background: var(--card);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 28px 48px;
+    border-right: 1px solid var(--border);
+  }
+
+  .trust-item:last-child { border-right: none; }
+
+  .trust-icon { font-size: 20px; }
+
+  .trust-text { font-size: 12px; letter-spacing: 1px; color: var(--text-muted); }
+  .trust-text strong { color: var(--text); display: block; font-size: 14px; }
+
+  /* ── LABEL ── */
+  .theme-label {
+    position: fixed;
+    bottom: 24px; right: 24px;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 10px 20px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    z-index: 999;
+  }
+</style>
+</head>
+<body>
+
+<div class="theme-label">Theme 2 — Clinical Dark</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">COSMO<span>DONT</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Gallery</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <button class="nav-cta">Book Appointment</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Gomti Nagar, Lucknow</div>
+    <h1 class="hero-h1">
+      Precision dentistry.<br>
+      <em>Personal care.</em>
+    </h1>
+    <p class="hero-sub">ISO 9001:2015 certified. Lucknow's largest clear aligner provider. Where clinical excellence meets genuine human care.</p>
+    <div class="hero-actions">
+      <button class="btn-primary">Book Consultation</button>
+      <button class="btn-ghost">View Our Work</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">100+</div>
+        <div class="stat-label">5★ Reviews</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">20/mo</div>
+        <div class="stat-label">Aligner Cases</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">ISO</div>
+        <div class="stat-label">Certified</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-card-main">
+      <div class="card-icon">🦷</div>
+      <div class="card-title">Clear Aligners</div>
+      <p class="card-text">Largest aligner provider in Uttar Pradesh. Virtually invisible. Comfortable. Results in months, not years.</p>
+      <a href="#" class="service-link">Learn More →</a>
+    </div>
+    <div class="hero-card-float">
+      <div class="float-icon">⭐</div>
+      <div>
+        <div class="float-num">5.0</div>
+        <div class="float-text">Average Google Rating</div>
+      </div>
+    </div>
+    <div class="hero-line"></div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-icon">🏅</div>
+    <div class="trust-text"><strong>ISO 9001:2015</strong>Certified Clinic</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">⭐</div>
+    <div class="trust-text"><strong>5-Star Rated</strong>100+ Google Reviews</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">🦷</div>
+    <div class="trust-text"><strong>Largest in UP</strong>Clear Aligner Provider</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">💳</div>
+    <div class="trust-text"><strong>Zero Cost EMI</strong>Flexible Payment Plans</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="services-header">
+    <div>
+      <div class="section-tag">What We Specialise In</div>
+      <h2 class="section-h2">Every smile is different.<br>Every treatment is personal.</h2>
+    </div>
+    <p class="section-sub">From routine checkups to full smile transformations — all under one roof.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon">✦</div>
+      <div class="service-name">Clear Aligners</div>
+      <p class="service-desc">Straighten your teeth without anyone noticing. Lucknow's #1 aligner provider with 20 cases monthly.</p>
+      <a href="#" class="service-link">Learn More →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon">✦</div>
+      <div class="service-name">Dental Implants</div>
+      <p class="service-desc">Permanent. Natural-looking. Life-changing. Advanced 3D scanner for perfect placement every time.</p>
+      <a href="#" class="service-link">Learn More →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon">✦</div>
+      <div class="service-name">Crowns & Caps</div>
+      <p class="service-desc">Zirconia and 3M crowns crafted to match your natural teeth. Precision-fitted for perfect comfort.</p>
+      <a href="#" class="service-link">Learn More →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-icon">✦</div>
+      <div class="service-name">Painless Dentistry</div>
+      <p class="service-desc">Conscious sedation so you feel calm, not scared. The dental visit you've been putting off — made easy.</p>
+      <a href="#" class="service-link">Learn More →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-icon">✦</div>
+      <div class="service-name">Orthodontics</div>
+      <p class="service-desc">Braces, aligners, retainers — tailored to your bite. Expert orthodontic care for all ages.</p>
+      <a href="#" class="service-link">Learn More →</a>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-icon">✦</div>
+      <div class="service-name">Smile Makeover</div>
+      <p class="service-desc">Combine treatments for a complete transformation. Walk in with a concern, walk out with confidence.</p>
+      <a href="#" class="service-link">Learn More →</a>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTORS -->
+<section style="padding: 100px 60px; background: var(--bg);">
+  <div class="section-tag">The Hands Behind Your Smile</div>
+  <h2 class="section-h2">You're not just a patient here.</h2>
+  <div class="doctors-grid">
+    <div class="doctor-card">
+      <div class="doctor-avatar">US</div>
+      <div class="doctor-name">Dr. Utkarsh Singh</div>
+      <div class="doctor-role">Co-Founder · Periodontics & Implantology</div>
+      <p class="doctor-quote">"I believe in explaining everything first. A patient who understands their treatment trusts the process."</p>
+    </div>
+    <div class="doctor-card">
+      <div class="doctor-avatar">AS</div>
+      <div class="doctor-name">Dr. Ananya Sharma</div>
+      <div class="doctor-role">Co-Founder · Implant Surgeon</div>
+      <p class="doctor-quote">"Every smile we restore changes how someone sees themselves. That responsibility drives everything we do."</p>
+    </div>
+    <div class="doctor-card">
+      <div class="doctor-avatar">AS</div>
+      <div class="doctor-name">Dr. Abhinav Srivastav</div>
+      <div class="doctor-role">Cosmetic Dentist · Aligner Consultant</div>
+      <p class="doctor-quote">"The best dental work is the kind nobody can tell you had done. That's what we aim for every time."</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-tag">In Their Own Words</div>
+  <h2 class="section-h2">What our patients actually say.</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Gem of a doctor — explained things, didn't recommend unnecessary procedures. The clinic atmosphere is very welcoming."</p>
+      <div class="testimonial-author">Aakash Pathak · via Google</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Cosmodont is my go-to clinic for any dental emergency. Doctors provide the kind of assurance that every patient needs."</p>
+      <div class="testimonial-author">Zapan Chawla · via Google</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Treatment was painless and effective. Proper hygiene is maintained and appointments are very well managed."</p>
+      <div class="testimonial-author">Kushal Gupta · via Google</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / BOOK -->
+<div class="cta-section">
+  <div>
+    <div class="section-tag">Ready to Begin</div>
+    <h2 class="section-h2">Your smile starts with one conversation.</h2>
+    <p style="color: var(--text-muted); font-size: 15px; margin-top: 16px; line-height: 1.8;">Free consultation. No pressure. We'll explain everything before we recommend anything.</p>
+    <p style="color: var(--text-dim); font-size: 13px; margin-top: 32px;">Or call us directly<br>
+    <span style="color: var(--accent); font-size: 18px; font-family: var(--display);">01206852683</span></p>
+  </div>
+  <div class="cta-form">
+    <div class="form-row">
+      <input class="form-input" type="text" placeholder="Your Name">
+      <input class="form-input" type="tel" placeholder="Phone Number">
+    </div>
+    <select class="form-select">
+      <option>Select a Service</option>
+      <option>Clear Aligners</option>
+      <option>Dental Implants</option>
+      <option>Crowns & Caps</option>
+      <option>Orthodontics</option>
+      <option>General Checkup</option>
+    </select>
+    <button class="form-submit">Book Free Consultation</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo">COSMO<span style="color: var(--accent);">DONT</span></div>
+      <p>ISO 9001:2015 certified dental clinic in Gomti Nagar, Lucknow. Where clinical excellence meets genuine human care.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li>Clear Aligners</li>
+        <li>Dental Implants</li>
+        <li>Crowns & Caps</li>
+        <li>Painless Dentistry</li>
+        <li>Orthodontics</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Clinic</h4>
+      <ul>
+        <li>About Us</li>
+        <li>Meet the Doctors</li>
+        <li>Gallery</li>
+        <li>Testimonials</li>
+        <li>Blog</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Visit Us</h4>
+      <ul>
+        <li>Gomti Nagar, Lucknow</li>
+        <li>Mon–Thu: 11AM–9PM</li>
+        <li>01206852683</li>
+        <li>Instagram</li>
+        <li>Facebook</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Cosmodont Dental Clinic</span>
+    <span>Website by <a href="#">Bingemind</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
