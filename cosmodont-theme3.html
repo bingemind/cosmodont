@@ -60,6 +60,7 @@
   }
 
   .nav-logo span { color: var(--accent); }
+  .nav-logo img { height: 38px; width: auto; display: block; }
 
   .nav-links {
     display: flex;
@@ -402,7 +403,28 @@
   .service-item:hover { border-color: var(--accent-light); }
   .service-item:hover::after { transform: scaleX(1); }
 
-  .service-emoji { font-size: 32px; margin-bottom: 20px; }
+  .why-icon svg,
+  .service-emoji svg {
+    width: 28px;
+    height: 28px;
+    stroke: #B85C38;
+    stroke-width: 1.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    display: block;
+  }
+
+  .service-emoji {
+    width: 44px;
+    height: 44px;
+    background: rgba(184,92,56,0.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
 
   .service-name {
     font-family: var(--display);
@@ -446,7 +468,7 @@
   .doctor-card:hover { transform: translateY(-4px); }
 
   .doctor-photo {
-    height: 160px;
+    height: 300px;
     background: linear-gradient(135deg, var(--accent-light), var(--sage-light));
     display: flex;
     align-items: center;
@@ -456,6 +478,17 @@
     font-weight: 300;
     color: var(--text-mid);
     position: relative;
+    overflow: hidden;
+  }
+  .doctor-photo img {
+    width: 100%; height: 100%; object-fit: cover; object-position: top center;
+  }
+  .doctor-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.45) 100%);
+    pointer-events: none;
   }
 
   .doctor-photo-label {
@@ -464,9 +497,10 @@
     font-size: 10px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: rgba(255,255,255,0.85);
     font-family: var(--body);
     font-weight: 500;
+    z-index: 1;
   }
 
   .doctor-info { padding: 28px; }
@@ -580,37 +614,40 @@
   .cta-form { display: flex; flex-direction: column; gap: 14px; }
 
   .cta-input {
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 10px;
     color: white;
-    padding: 16px 20px;
-    border-radius: 12px;
-    font-family: var(--body);
+    padding: 15px 18px;
+    font-family: inherit;
     font-size: 14px;
     outline: none;
+    width: 100%;
     transition: border-color 0.3s;
   }
 
-  .cta-input::placeholder { color: rgba(255,255,255,0.5); }
-  .cta-input:focus { border-color: white; }
+  .cta-input::placeholder { color: rgba(255,255,255,0.45); }
+  .cta-input:focus { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.18); }
 
   .cta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
   .cta-submit {
     background: white;
-    color: var(--accent);
+    color: #B85C38;
     border: none;
-    padding: 18px;
-    border-radius: 12px;
+    padding: 17px;
+    border-radius: 10px;
     font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 1px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
     cursor: pointer;
+    width: 100%;
+    margin-top: 4px;
     font-family: var(--body);
-    transition: all 0.3s;
+    transition: all 0.25s;
   }
 
-  .cta-submit:hover { background: var(--bg); transform: translateY(-1px); }
+  .cta-submit:hover { background: #FAF7F2; transform: translateY(-1px); }
 
   /* ── FOOTER ── */
   footer {
@@ -633,7 +670,7 @@
     margin-bottom: 16px;
   }
 
-  .footer-logo span { color: var(--accent); }
+  /* .footer-logo span { color: var(--accent); } */
 
   .footer-desc {
     font-size: 13px;
@@ -698,6 +735,8 @@
     footer { padding: 60px 32px 32px; }
     .footer-top { gap: 40px; }
     .services-list { grid-template-columns: repeat(2, 1fr); }
+    .doctors-row { grid-template-columns: repeat(2, 1fr); }
+    .doctor-photo { height: 260px; }
   }
 
   @media (max-width: 768px) {
@@ -721,6 +760,7 @@
     .services-list { grid-template-columns: 1fr; gap: 16px; }
 
     .doctors-row { grid-template-columns: 1fr; }
+    .doctor-photo { height: 280px; }
 
     .testi-grid { grid-template-columns: 1fr; }
 
@@ -750,6 +790,211 @@
     .cta-block { margin: 0 12px 40px; padding: 40px 20px; border-radius: 16px; }
     section { padding: 48px 16px; }
     footer { padding: 40px 16px 24px; }
+    .doctor-photo { height: 240px; }
+  }
+
+  /* ── INSIDE COSMODONT ── */
+  .inside-section {
+    padding: 100px 60px;
+    background: var(--bg, #F9F5F0);
+  }
+
+  .inside-header {
+    margin-bottom: 52px;
+  }
+
+  .inside-h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(34px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 14px;
+    color: #1A1410;
+  }
+
+  .inside-h2 em {
+    font-style: italic;
+    color: #B85C38;
+  }
+
+  .inside-sub {
+    font-size: 15px;
+    color: #9A8878;
+    max-width: 400px;
+    line-height: 1.7;
+  }
+
+  .inside-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .inside-col-main,
+  .inside-col-side {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .inside-img-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #EDE8E0;
+  }
+
+  .inside-img-large { height: 520px; }
+  .inside-img-small { height: 248px; }
+
+  .inside-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .inside-img-wrap:hover .inside-img {
+    transform: scale(1.03);
+  }
+
+  .inside-img-label {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: rgba(255,255,255,0.85);
+    color: #1A1410;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 100px;
+    backdrop-filter: blur(8px);
+  }
+
+  .inside-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #EDE8E0, #E4DDD2);
+    gap: 8px;
+    min-height: inherit;
+  }
+
+  .inside-placeholder span {
+    font-size: 14px;
+    color: #9A8878;
+    font-weight: 500;
+    font-family: 'Fraunces', serif;
+  }
+
+  .inside-placeholder small {
+    font-size: 11px;
+    color: #B8ADA0;
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 768px) {
+    .inside-section { padding: 60px 20px; }
+    .inside-grid { grid-template-columns: 1fr; }
+    .inside-img-large { height: 300px; }
+    .inside-img-small { height: 200px; }
+  }
+
+  /* ── BEFORE & AFTER ── */
+  .gallery-section {
+    padding: 100px 60px;
+    background: #F3EDE4;
+  }
+
+  .gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 52px;
+  }
+
+  .gallery-h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(34px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    color: #1A1410;
+  }
+
+  .gallery-h2 em {
+    font-style: italic;
+    color: #B85C38;
+  }
+
+  .gallery-sub {
+    font-size: 15px;
+    color: #9A8878;
+    line-height: 1.7;
+  }
+
+  .gallery-ig-link {
+    font-size: 13px;
+    color: #B85C38;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+  }
+
+  .gallery-ig-link:hover { opacity: 0.7; }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .gallery-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #E8DDD0;
+  }
+
+  .gallery-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .gallery-card-label {
+    padding: 16px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #5C4A3A;
+    letter-spacing: 0.5px;
+    font-family: 'Jost', sans-serif;
+  }
+
+  .gallery-consent {
+    font-size: 11px;
+    color: #B8ADA0;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 768px) {
+    .gallery-section { padding: 60px 20px; }
+    .gallery-header { flex-direction: column;
+      align-items: flex-start; gap: 20px; }
+    .gallery-grid { grid-template-columns: 1fr; }
   }
 
 </style>
@@ -761,7 +1006,7 @@
 
 <!-- NAVBAR -->
 <nav>
-  <div class="nav-logo">Cosmo<span>dont</span></div>
+  <div class="nav-logo"><img src="main-log.jpg" alt="Cosmodont Dental Clinic" style="height:38px;width:auto;display:block;"></div>
   <ul class="nav-links">
     <li><a href="#">Home</a></li>
     <li><a href="#">Services</a></li>
@@ -775,7 +1020,7 @@
 <!-- HERO -->
 <section class="hero">
   <div>
-    <div class="hero-eyebrow">🏅 ISO 9001:2015 Certified · Gomti Nagar, Lucknow</div>
+    <div class="hero-eyebrow">ISO 9001:2015 Certified · Gomti Nagar, Lucknow</div>
     <h1 class="hero-h1">
       A dental clinic<br>
       that feels
@@ -829,26 +1074,96 @@
   <h2 class="section-h2">We built this clinic<br><em>for the patient, not the dentist.</em></h2>
   <div class="why-grid">
     <div class="why-card">
-      <div class="why-icon">🏛️</div>
+      <div class="why-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 8h1a4 4 0 010 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></div>
       <div class="why-title">Café-Like Waiting Area</div>
       <p class="why-desc">Arrive early on purpose. Free WiFi, comfortable seating, no sterile waiting room anxiety. Your time here starts well before the chair.</p>
     </div>
     <div class="why-card">
-      <div class="why-icon">🧪</div>
+      <div class="why-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9,12 11,14 15,10"/></svg></div>
       <div class="why-title">ISO Certified Hygiene</div>
       <p class="why-desc">Strict 3-month audits. Dedicated sterilization space. Every instrument, every time. We hold ourselves to the highest standard.</p>
     </div>
     <div class="why-card">
-      <div class="why-icon">👨‍⚕️</div>
+      <div class="why-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/><line x1="12" y1="13" x2="12" y2="17"/><line x1="10" y1="15" x2="14" y2="15"/></svg></div>
       <div class="why-title">Doctors Who Don't Oversell</div>
       <p class="why-desc">We explain everything. We recommend only what you need. Your trust matters more than a bigger bill — always.</p>
     </div>
     <div class="why-card">
-      <div class="why-icon">📅</div>
+      <div class="why-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div>
       <div class="why-title">Appointments That Run On Time</div>
       <p class="why-desc">Separate areas for waiting, consultation and surgery. A process designed so your time is respected from the moment you walk in.</p>
     </div>
   </div>
+</section>
+
+<!-- ═══ SECTION: INSIDE COSMODONT ═══ -->
+<section class="inside-section">
+
+  <div class="inside-header">
+    <div class="section-tag">Our Space</div>
+    <h2 class="inside-h2">
+      Step inside<br>
+      <em>Cosmodont.</em>
+    </h2>
+    <p class="inside-sub">
+      A clinic that looks nothing like
+      what you're expecting.
+    </p>
+  </div>
+
+  <div class="inside-grid">
+
+    <div class="inside-col-main">
+      <div class="inside-img-wrap inside-img-large">
+        <img
+          src="Comfortable-Cafe-like-Waiting-Experience.jpg"
+          alt="Café-like waiting area at Cosmodont"
+          loading="lazy"
+          class="inside-img"
+        >
+        <div class="inside-img-label">
+          Café-Like Waiting Area
+        </div>
+      </div>
+    </div>
+
+    <!--
+      DEVELOPER NOTE: Right column slots
+      Replace placeholders when client provides photos:
+      - data-image-slot="reception"
+        → reception/entrance photo
+      - data-image-slot="equipment"
+        → equipment/technology photo
+    -->
+    <div class="inside-col-side">
+      <div class="inside-img-wrap inside-img-small"
+        data-image-slot="reception">
+        <img
+        src="reception.jpg"
+        alt="Café-like waiting area at Cosmodont"
+        loading="lazy"
+        class="inside-img"
+      >
+        <div class="inside-img-label">
+          Dedicated Reception
+        </div>
+      </div>
+      <div class="inside-img-wrap inside-img-small"
+        data-image-slot="equipment">
+        <img
+        src="Dedicated-Sterilization-Space.jpg"
+        alt="Café-like waiting area at Cosmodont"
+        loading="lazy"
+        class="inside-img"
+      >
+        <div class="inside-img-label">
+          ISO Certified Technology
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </section>
 
 <!-- SERVICES -->
@@ -862,37 +1177,37 @@
   </div>
   <div class="services-list">
     <div class="service-item">
-      <div class="service-emoji">✨</div>
+      <div class="service-emoji"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 13s1.5 2 4 2 4-2 4-2"/><circle cx="12" cy="12" r="10"/></svg></div>
       <div class="service-name">Clear Aligners</div>
       <p class="service-desc">Straighten your teeth without anyone noticing. Lucknow's #1 aligner provider — 20 cases monthly.</p>
       <div class="service-arrow">Learn More →</div>
     </div>
     <div class="service-item">
-      <div class="service-emoji">🦷</div>
+      <div class="service-emoji"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="22"/><path d="M5 15h14"/></svg></div>
       <div class="service-name">Dental Implants</div>
       <p class="service-desc">Permanent. Natural-looking. Life-changing. Advanced 3D scanner for perfect placement every time.</p>
       <div class="service-arrow">Learn More →</div>
     </div>
     <div class="service-item">
-      <div class="service-emoji">💎</div>
+      <div class="service-emoji"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 22,8.5 19,21 5,21 2,8.5"/><line x1="2" y1="8.5" x2="22" y2="8.5"/><line x1="12" y1="2" x2="5" y2="21"/><line x1="12" y1="2" x2="19" y2="21"/></svg></div>
       <div class="service-name">Crowns & Caps</div>
       <p class="service-desc">Zirconia and 3M crowns matched perfectly to your natural teeth. Precision-fitted for comfort.</p>
       <div class="service-arrow">Learn More →</div>
     </div>
     <div class="service-item">
-      <div class="service-emoji">😌</div>
+      <div class="service-emoji"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg></div>
       <div class="service-name">Painless Dentistry</div>
       <p class="service-desc">Conscious sedation so you feel calm, not scared. The dental visit you've been putting off — made easy.</p>
       <div class="service-arrow">Learn More →</div>
     </div>
     <div class="service-item">
-      <div class="service-emoji">🌟</div>
+      <div class="service-emoji"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
       <div class="service-name">Orthodontics</div>
       <p class="service-desc">Braces, aligners, retainers — tailored to your bite. Expert care for all ages.</p>
       <div class="service-arrow">Learn More →</div>
     </div>
     <div class="service-item">
-      <div class="service-emoji">🪞</div>
+      <div class="service-emoji"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div>
       <div class="service-name">Smile Makeover</div>
       <p class="service-desc">Combine treatments for a complete transformation. Walk in with a concern, walk out with confidence.</p>
       <div class="service-arrow">Learn More →</div>
@@ -907,7 +1222,7 @@
   <div class="doctors-row">
     <div class="doctor-card">
       <div class="doctor-photo">
-        US
+        <img src="Dr.-Utkarsh-Singh.jpg" alt="Dr. Utkarsh Singh">
         <div class="doctor-photo-label">Periodontics · Implantology</div>
       </div>
       <div class="doctor-info">
@@ -917,8 +1232,8 @@
       </div>
     </div>
     <div class="doctor-card">
-      <div class="doctor-photo" style="background: linear-gradient(135deg, #E8EFEC, #D0E0D8);">
-        AS
+      <div class="doctor-photo">
+        <img src="Ananya.jpg" alt="Dr. Ananya Sharma">
         <div class="doctor-photo-label">Implantology · Surgery</div>
       </div>
       <div class="doctor-info">
@@ -928,8 +1243,8 @@
       </div>
     </div>
     <div class="doctor-card">
-      <div class="doctor-photo" style="background: linear-gradient(135deg, #EEE8F0, #DDD0E8);">
-        AS
+      <div class="doctor-photo">
+        <img src="Abhinav.jpg" alt="Dr. Abhinav Srivastav">
         <div class="doctor-photo-label">Cosmetic · Aligners</div>
       </div>
       <div class="doctor-info">
@@ -939,6 +1254,53 @@
       </div>
     </div>
   </div>
+</section>
+
+<!-- ═══ SECTION: BEFORE & AFTER ═══ -->
+<section class="gallery-section">
+
+  <div class="gallery-header">
+    <div>
+      <div class="section-tag">Before & After</div>
+      <h2 class="gallery-h2">
+        Real patients.<br>
+        <em>Real results.</em>
+      </h2>
+      <p class="gallery-sub">
+        Every transformation starts
+        with one conversation.
+      </p>
+    </div>
+    <a href="https://instagram.com/cosmodont.dentalclinic"
+      target="_blank"
+      class="gallery-ig-link">
+      See More on Instagram →
+    </a>
+  </div>
+
+  <div class="gallery-grid">
+
+    <div class="gallery-card">
+      <img src="transformation1.jpg" alt="Clear Aligner Transformation" class="gallery-img" loading="lazy">
+      <div class="gallery-card-label">Clear Aligners</div>
+    </div>
+
+    <div class="gallery-card">
+      <img src="transformation2.jpg" alt="Dental Implant Transformation" class="gallery-img" loading="lazy">
+      <div class="gallery-card-label">Dental Implants</div>
+    </div>
+
+    <div class="gallery-card">
+      <img src="transformation3.jpg" alt="Smile Makeover Transformation" class="gallery-img" loading="lazy">
+      <div class="gallery-card-label">Smile Makeover</div>
+    </div>
+
+  </div>
+
+  <p class="gallery-consent">
+    Patient consent obtained for all images displayed.
+  </p>
+
 </section>
 
 <!-- TESTIMONIALS -->
@@ -1014,7 +1376,7 @@
 <footer>
   <div class="footer-top">
     <div>
-      <div class="footer-logo">Cosmo<span>dont</span></div>
+      <div class="footer-logo"><img src="main-log.jpg" alt="Cosmodont Dental Clinic" style="height:40px;width:auto;display:block;filter:brightness(0) invert(1);"></div>
       <p class="footer-desc">ISO 9001:2015 certified dental clinic in Gomti Nagar, Lucknow. Where clinical excellence meets genuine human care.</p>
     </div>
     <div class="footer-col">
@@ -1041,7 +1403,8 @@
       <h4>Visit Us</h4>
       <ul>
         <li>Gomti Nagar, Lucknow</li>
-        <li>Mon–Thu: 11AM–9PM</li>
+        <li>Mon – Thu: 11:00 AM – 9:00 PM</li>
+        <li>Fri – Sun: By Appointment</li>
         <li>01206852683</li>
         <li>Instagram</li>
         <li>Facebook</li>

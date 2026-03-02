@@ -158,9 +158,12 @@ header { padding-top: 2rem; }
 /* ── Cards grid ───────────────────────────────────────────────── */
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   padding-bottom: 6rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ── Card ─────────────────────────────────────────────────────── */
@@ -182,7 +185,6 @@ header { padding-top: 2rem; }
 }
 .card:nth-child(1) { animation-delay: 0.15s; }
 .card:nth-child(2) { animation-delay: 0.28s; }
-.card:nth-child(3) { animation-delay: 0.41s; }
 
 /* Per-theme hover glow */
 .card-gold:hover {
@@ -442,11 +444,10 @@ body { padding-top: 40px; transition: padding-top 0.35s ease; }
 }
 
 /* ── Responsive ───────────────────────────────────────────────── */
-@media (max-width: 860px) {
+@media (max-width: 600px) {
   .cards {
     grid-template-columns: 1fr;
-    max-width: 440px;
-    margin: 0 auto;
+    max-width: 480px;
   }
   .swatch { height: 160px; }
   .swatch-num { font-size: 7rem; }
@@ -486,7 +487,7 @@ body { padding-top: 40px; transition: padding-top 0.35s ease; }
 
   <!-- ═══ HERO ═══ -->
   <div class="hero">
-    <div class="hero-label">Three Design Directions</div>
+    <div class="hero-label">Two Design Directions</div>
     <h1 class="hero-headline">Choose your brand.</h1>
     <p class="hero-sub">
       Each version is a complete demo — same content, different personality.
@@ -537,7 +538,7 @@ body { padding-top: 40px; transition: padding-top 0.35s ease; }
     </div>
 
     <!-- Card 2 · Clinical Dark / Noir -->
-    <div class="card card-noir"
+    <!-- <div class="card card-noir"
          onclick="window.open('cosmodont-theme2.html','_blank')"
          role="button"
          tabindex="0"
@@ -573,7 +574,7 @@ body { padding-top: 40px; transition: padding-top 0.35s ease; }
           Open Demo <span class="arrow">→</span>
         </a>
       </div>
-    </div>
+    </div> -->
 
     <!-- Card 3 · Soft Editorial / Blush -->
     <div class="card card-blush"
@@ -589,10 +590,10 @@ body { padding-top: 40px; transition: padding-top 0.35s ease; }
           <div class="bar bar-3"></div>
         </div>
         <span class="swatch-type-pill">Warm</span>
-        <span class="swatch-num" aria-hidden="true">03</span>
+        <span class="swatch-num" aria-hidden="true">02</span>
       </div>
       <div class="card-body">
-        <span class="card-badge badge-blush">03 &nbsp;·&nbsp; Blush</span>
+        <span class="card-badge badge-blush">02 &nbsp;·&nbsp; Blush</span>
         <h2 class="card-name">Soft Editorial</h2>
         <p class="card-tagline">Warm &nbsp;·&nbsp; Friendly &nbsp;·&nbsp; Approachable</p>
         <p class="card-desc">

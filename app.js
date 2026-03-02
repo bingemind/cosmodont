@@ -84,27 +84,14 @@ function renderSite() {
   const galleryGrid = document.getElementById('galleryGrid');
   if (galleryGrid) {
     galleryGrid.innerHTML = CONFIG.gallery.map((g, i) => {
-      /* Use real images if provided, otherwise show placeholder divs */
-      const beforeEl = g.beforeImage
-        ? `<img src="${g.beforeImage}" alt="Before treatment" loading="lazy" style="width:100%;height:100%;object-fit:cover;">`
-        : '';
-      const afterEl = g.afterImage
-        ? `<img src="${g.afterImage}" alt="After treatment" loading="lazy" style="width:100%;height:100%;object-fit:cover;">`
+      const imgEl = g.image
+        ? `<img src="${g.image}" alt="${g.treatment}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">`
         : '';
 
       return `
         <div class="gallery-card reveal reveal-d${i + 1}">
-          <div class="gallery-pair">
-            <div class="gallery-img gallery-img-before" data-image-id="gallery-${i+1}-before"
-                 role="img" aria-label="Before treatment">
-              ${beforeEl}
-              <span class="gallery-badge gallery-badge-before">Before</span>
-            </div>
-            <div class="gallery-img gallery-img-after" data-image-id="gallery-${i+1}-after"
-                 role="img" aria-label="After treatment">
-              ${afterEl}
-              <span class="gallery-badge gallery-badge-after">After</span>
-            </div>
+          <div class="gallery-img" data-image-id="gallery-${i+1}" role="img" aria-label="${g.treatment}">
+            ${imgEl}
           </div>
           <div class="gallery-card-info">
             <p class="gallery-treatment">${g.treatment}</p>
@@ -142,7 +129,9 @@ function renderSite() {
   const partnerLogos = document.getElementById('partnerLogos');
   if (partnerLogos) {
     partnerLogos.innerHTML = CONFIG.financing.partners.map(p => `
-      <div class="partner-logo" data-image-id="partner-${p.toLowerCase().replace(/\s/g, '-')}">${p}</div>
+      <div class="partner-logo-wrap">
+        <img src="${p.logo}" alt="${p.name}" class="partner-logo" loading="lazy">
+      </div>
     `).join('');
   }
 

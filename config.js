@@ -18,7 +18,7 @@ const CONFIG = {
     phones:    ['01206852683', '07992074028'],
     whatsapp:  '917992074028',
     email:     '',                          // Add email when available
-    instagram: 'https://instagram.com',     // Update with real handle URL
+    instagram: 'https://www.instagram.com/cosmodont.dentalclinic/',
     facebook:  'https://facebook.com',      // Update with real page URL
     iso:       'ISO 9001:2015 Certified',
   },
@@ -70,6 +70,7 @@ const CONFIG = {
   doctors: [
     {
       initials:  'US',
+      image:     'Dr.-Utkarsh-Singh.jpg',
       name:      'Dr. Utkarsh Singh',
       role:      'Co-Founder & Chief Dental Surgeon',
       specialty: 'Periodontics & Implantology',
@@ -78,6 +79,7 @@ const CONFIG = {
     },
     {
       initials:  'AS',
+      image:     'Ananya.jpg',
       name:      'Dr. Ananya Sharma',
       role:      'Co-Founder & Chief Implant Surgeon',
       specialty: 'Periodontology, Implantology & Dental Surgery',
@@ -86,6 +88,7 @@ const CONFIG = {
     },
     {
       initials:  'AbS',
+      image:     'Abhinav.jpg',
       name:      'Dr. Abhinav Srivastav',
       role:      'Cosmetic Dentist & Aligner Consultant',
       specialty: 'Cosmetic Dentistry, Aligners & Restorations',
@@ -134,22 +137,19 @@ const CONFIG = {
      Then update the gallery render in app.js to use <img> tags.   */
   gallery: [
     {
-      treatment:   'Clear Aligner Transformation',
-      type:        'Cosmetic · Aligners',
-      beforeImage: null,   // Replace with: 'images/gallery-1-before.jpg'
-      afterImage:  null,   // Replace with: 'images/gallery-1-after.jpg'
+      treatment: 'Clear Aligner Transformation',
+      type:      'Cosmetic · Aligners',
+      image:     'transformation1.jpg',
     },
     {
-      treatment:   'Smile Makeover',
-      type:        'Crowns · Veneers',
-      beforeImage: null,   // Replace with: 'images/gallery-2-before.jpg'
-      afterImage:  null,   // Replace with: 'images/gallery-2-after.jpg'
+      treatment: 'Smile Makeover',
+      type:      'Crowns · Veneers',
+      image:     'transformation2.jpg',
     },
     {
-      treatment:   'Dental Implant',
-      type:        'Implantology · Restorations',
-      beforeImage: null,   // Replace with: 'images/gallery-3-before.jpg'
-      afterImage:  null,   // Replace with: 'images/gallery-3-after.jpg'
+      treatment: 'Dental Implant',
+      type:      'Implantology · Restorations',
+      image:     'transformation3.jpg',
     },
   ],
 
@@ -169,7 +169,11 @@ const CONFIG = {
       { icon: '💳', text: 'Zero cost EMIs on all major credit cards'              },
       { icon: '🤝', text: 'Insurance accepted — Mediassist, Medibuddy & Magma Health' },
     ],
-    partners:  ['Bajaj Finserv', 'Fibe', 'Savein'],
+    partners: [
+      { name: 'Bajaj Finserv', logo: 'bajaj-fin-logo.jpg' },
+      { name: 'Fibe',          logo: 'fibe-logo.jpg'      },
+      { name: 'Savein',        logo: 'save-in-logo.jpg'   },
+    ],
     insurance: ['Mediassist', 'Medibuddy', 'Magma Health'],
   },
 
