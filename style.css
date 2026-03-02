@@ -1310,16 +1310,23 @@ input, select, textarea { font-family: var(--font-body); }
   gap: var(--space-xl);
   padding-bottom: var(--space-xl);
 }
-.footer-logo-wrap { margin-bottom: 0.85rem; }
+.footer-logo-wrap { margin-bottom: 0.85rem; max-width: 100%; overflow: hidden; }
 .footer-logo {
   font-family: var(--font-display);
   font-size: 1.55rem;
   font-weight: 600;
   letter-spacing: 0.06em;
-  color: var(--color-bg);
+  /* color: var(--color-bg); */
   display: inline-block;
 }
 .footer-logo .logo-dot { color: var(--color-gold); }
+.footer-logo img {
+  height: auto;
+  width: 140px;
+  max-width: 140px;
+  object-fit: contain;
+  display: block;
+}
 .footer-tagline {
   font-size: 0.8rem;
   color: rgba(250,247,242,0.38);
@@ -1476,6 +1483,7 @@ input, select, textarea { font-family: var(--font-body); }
   .financing-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: var(--space-lg); }
   .footer-bottom { flex-direction: column; text-align: center; }
+  .footer-brand img, .footer-logo img { width: 120px; height: auto; max-width: 120px; }
 
   .credentials-row { display: grid; grid-template-columns: repeat(2, 1fr); }
   .credential-item + .credential-item::before { display: none; }
@@ -1499,5 +1507,6 @@ input, select, textarea { font-family: var(--font-body); }
   .credential-item:nth-child(n+2) { border-top: 1px solid rgba(201,168,76,0.12); border-left: none; }
   .credential-item + .credential-item::before { display: none; }
   .footer-grid { grid-template-columns: 1fr; }
+  .footer-brand img, .footer-logo img { width: 100px; height: auto; max-width: 100px; }
   .container { padding: 0 1.25rem; }
 }

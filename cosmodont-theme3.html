@@ -668,6 +668,16 @@
     font-weight: 500;
     color: white;
     margin-bottom: 16px;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .footer-logo img {
+    height: auto;
+    width: 140px;
+    max-width: 140px;
+    object-fit: contain;
+    display: block;
   }
 
   /* .footer-logo span { color: var(--accent); } */
@@ -776,6 +786,7 @@
     .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 36px; }
     .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
     footer { padding: 48px 20px 24px; }
+    .footer-brand img, .footer-logo img { width: 120px; height: auto; max-width: 120px; }
 
     section { padding: 60px 20px; }
   }
@@ -791,6 +802,7 @@
     section { padding: 48px 16px; }
     footer { padding: 40px 16px 24px; }
     .doctor-photo { height: 240px; }
+    .footer-brand img, .footer-logo img { width: 100px; height: auto; max-width: 100px; }
   }
 
   /* ── INSIDE COSMODONT ── */
@@ -1376,7 +1388,7 @@
 <footer>
   <div class="footer-top">
     <div>
-      <div class="footer-logo"><img src="main-log.jpg" alt="Cosmodont Dental Clinic" style="height:40px;width:auto;display:block;filter:brightness(0) invert(1);"></div>
+      <div class="footer-logo"><img src="main-log.jpg" alt="Cosmodont Dental Clinic"></div>
       <p class="footer-desc">ISO 9001:2015 certified dental clinic in Gomti Nagar, Lucknow. Where clinical excellence meets genuine human care.</p>
     </div>
     <div class="footer-col">
