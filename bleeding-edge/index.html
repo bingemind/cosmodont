@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cosmodont Dental Clinic — Premium Dental Care, Lucknow</title>
+<meta name="description" content="Cosmodont Dental Clinic — Lucknow's #1 clear aligner provider. ISO 9001:2015 certified. Book a painless consultation today.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   BLEEDING EDGE — CSS Design System
+   Colors: Navy #0F2B3D · Red #E8472A · Teal #2A7FA5
+   Fonts: DM Serif Display + DM Sans
+   ═══════════════════════════════════════════════ */
+
+/* ── Variables ───────────────────────────────── */
+:root {
+  --red:         #E8472A;
+  --teal:        #2A7FA5;
+  --navy:        #0F2B3D;
+  --red-light:   #FDEAE6;
+  --teal-light:  #E3F2F8;
+  --white:       #FFFFFF;
+  --cream:       #FBF8F4;
+  --off:         #F4F1ED;
+  --muted:       #7A8C96;
+  --border:      rgba(15,43,61,0.1);
+  --border-w:    rgba(255,255,255,0.12);
+
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-body:    "DM Sans", system-ui, sans-serif;
+
+  --nav-h:    72px;
+  --pad-x:    clamp(1.5rem, 5vw, 4.5rem);
+  --pad-y:    clamp(4rem, 8vw, 7rem);
+  --content:  1200px;
+  --ease:     cubic-bezier(0.4, 0, 0.2, 1);
+  --spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Reset ───────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  color: var(--navy);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+ul { list-style: none; }
+
+/* ── Loader ──────────────────────────────────── */
+#loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--navy);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem;
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+#loader.out { opacity: 0; transform: scale(0.96); pointer-events: none; }
+.loader-logo { height: 52px; width: auto; }
+.loader-progress {
+  width: 140px; height: 2px;
+  background: rgba(255,255,255,0.08); border-radius: 99px; overflow: hidden;
+}
+.loader-bar {
+  height: 100%; width: 0; border-radius: 99px;
+  background: linear-gradient(90deg, var(--teal), var(--red));
+  animation: loaderFill 1.1s var(--ease) forwards;
+}
+.loader-text {
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(255,255,255,0.35);
+}
+@keyframes loaderFill { to { width: 100%; } }
+
+/* ── Custom Cursor (desktop only) ────────────── */
+.cursor {
+  width: 20px; height: 20px; border: 2px solid var(--red); border-radius: 50%;
+  position: fixed; pointer-events: none; z-index: 10000;
+  transform: translate(-50%,-50%);
+  transition: width 0.2s, height 0.2s, background 0.2s, border-color 0.2s;
+}
+.cursor-dot {
+  width: 4px; height: 4px; background: var(--red); border-radius: 50%;
+  position: fixed; pointer-events: none; z-index: 10001;
+  transform: translate(-50%,-50%); transition: transform 0.1s;
+}
+@media (hover: none) { .cursor, .cursor-dot { display: none; } }
+
+/* ── Nav ─────────────────────────────────────── */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: var(--nav-h);
+  background: rgba(15,43,61,0.96);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-w);
+  transition: box-shadow 0.3s var(--ease);
+}
+#navbar.scrolled { box-shadow: 0 8px 32px rgba(15,43,61,0.4); }
+.nav-inner {
+  max-width: var(--content); margin: 0 auto;
+  height: 100%; padding: 0 var(--pad-x);
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+}
+.nav-logo { display: flex; align-items: center; gap: 0.65rem; flex-shrink: 0; }
+.nav-logo img { height: 34px; width: auto; }
+.nav-logo-name { font-family: var(--font-display); font-size: 1.05rem; color: var(--white); }
+.nav-links { display: flex; align-items: center; gap: 0.15rem; }
+.nav-links a {
+  font-size: 0.83rem; font-weight: 500; color: rgba(255,255,255,0.6);
+  padding: 0.45rem 0.85rem; border-radius: 6px; letter-spacing: 0.01em;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+.nav-actions { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
+.btn-ghost-nav {
+  font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.7);
+  padding: 0.48rem 1.1rem; border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: color 0.2s, background 0.2s;
+}
+.btn-ghost-nav:hover { color: var(--white); background: rgba(255,255,255,0.07); }
+.btn-red-nav {
+  font-size: 0.82rem; font-weight: 600; color: var(--white);
+  padding: 0.48rem 1.25rem; border-radius: 6px;
+  background: var(--red); transition: background 0.2s, transform 0.2s;
+}
+.btn-red-nav:hover { background: #d63d22; transform: translateY(-1px); }
+.nav-burger {
+  display: none; flex-direction: column; gap: 5px; padding: 6px; border-radius: 6px;
+  cursor: pointer; transition: background 0.2s;
+}
+.nav-burger:hover { background: rgba(255,255,255,0.07); }
+.nav-burger span {
+  display: block; width: 22px; height: 2px; background: var(--white);
+  border-radius: 99px; transition: transform 0.3s, opacity 0.3s;
+}
+/* Mobile nav overlay */
+#nav-overlay {
+  display: none; position: fixed; inset: 0; z-index: 998;
+  background: var(--navy); flex-direction: column;
+  align-items: center; justify-content: center; gap: 1.75rem;
+  opacity: 0; transition: opacity 0.3s;
+}
+#nav-overlay.open { display: flex; opacity: 1; }
+#nav-overlay a {
+  font-family: var(--font-display); font-size: 2rem; color: rgba(255,255,255,0.8);
+  transition: color 0.2s;
+}
+#nav-overlay a:hover { color: var(--red); }
+#nav-overlay-close {
+  margin-top: 0.5rem; color: rgba(255,255,255,0.35);
+  font-size: 1.5rem; cursor: pointer; transition: color 0.2s;
+}
+#nav-overlay-close:hover { color: var(--white); }
+
+/* ── Marquee ─────────────────────────────────── */
+.marquee-strip {
+  background: var(--red); padding: 0.6rem 0; overflow: hidden;
+  margin-top: var(--nav-h);
+}
+.marquee-track {
+  display: flex; white-space: nowrap;
+  animation: marqueeScroll 32s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+.marquee-item {
+  display: inline-flex; align-items: center; gap: 1.25rem;
+  padding: 0 1.25rem;
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(255,255,255,0.92);
+}
+.marquee-item::after { content: '◆'; font-size: 0.45rem; opacity: 0.5; }
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Section helpers ─────────────────────────── */
+.section { padding: var(--pad-y) var(--pad-x); }
+.section-bg-cream  { background: var(--cream); }
+.section-bg-off    { background: var(--off); }
+.section-bg-navy   { background: var(--navy); }
+.inner { max-width: var(--content); margin: 0 auto; }
+.eyebrow {
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--red);
+  display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;
+}
+.eyebrow::before { content: ''; display: block; width: 20px; height: 1.5px; background: var(--red); }
+.eyebrow-white { color: rgba(255,255,255,0.55); }
+.eyebrow-white::before { background: rgba(255,255,255,0.3); }
+.section-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.1; letter-spacing: -0.02em; color: var(--navy);
+  margin-bottom: 0.85rem;
+}
+.section-h2-white { color: var(--white); }
+.section-sub {
+  font-size: 1rem; color: var(--muted); line-height: 1.75; max-width: 560px;
+}
+.section-sub-white { color: rgba(255,255,255,0.55); }
+.section-hd { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+.section-hd-row {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 2rem; margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* ── Buttons ─────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-body); font-size: 0.88rem;
+  font-weight: 600; letter-spacing: 0.02em;
+  padding: 0.875rem 1.75rem; border-radius: 8px; cursor: pointer;
+  transition: all 0.25s var(--ease);
+}
+.btn-red  { background: var(--red); color: var(--white); }
+.btn-red:hover  { background: #d63d22; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(232,71,42,0.35); }
+.btn-teal { background: var(--teal); color: var(--white); }
+.btn-teal:hover { background: #236e91; transform: translateY(-2px); }
+.btn-outline-w {
+  border: 1.5px solid rgba(255,255,255,0.3); color: var(--white);
+  background: transparent;
+}
+.btn-outline-w:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55); }
+.btn-white { background: var(--white); color: var(--red); font-weight: 700; }
+.btn-white:hover { background: var(--off); transform: translateY(-2px); }
+
+/* ── Hero ────────────────────────────────────── */
+.hero {
+  min-height: 100vh; position: relative;
+  background: var(--navy);
+  display: flex; align-items: center; overflow: hidden;
+}
+.hero-video-wrap { position: absolute; inset: 0; overflow: hidden; }
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(135deg, rgba(15,43,61,0.95) 0%, rgba(15,43,61,0.7) 55%, rgba(42,127,165,0.15) 100%);
+}
+.hero-video-wrap video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  z-index: 2;
+  mix-blend-mode: screen;
+  opacity: 0.10;
+}
+.hero-inner {
+  max-width: var(--content); margin: 0 auto; width: 100%;
+  padding: var(--pad-y) var(--pad-x);
+  display: grid; grid-template-columns: 1fr 400px; gap: 4rem; align-items: center;
+  position: relative; z-index: 1;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(232,71,42,0.14); border: 1px solid rgba(232,71,42,0.3);
+  color: #FF9680; font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.28rem 0.85rem; border-radius: 99px; margin-bottom: 1.75rem;
+}
+.hero-eyebrow::before { content: '✦'; font-size: 0.5rem; }
+.hero-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  line-height: 1.06; letter-spacing: -0.025em; color: var(--white);
+  margin-bottom: 1.5rem;
+}
+.hero-h1 em { font-style: italic; color: var(--red); }
+.hero-sub {
+  font-size: clamp(1rem, 1.4vw, 1.1rem); color: rgba(255,255,255,0.58);
+  line-height: 1.78; margin-bottom: 2.5rem; max-width: 520px;
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-bottom: 2.75rem; }
+.hero-trust { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.trust-chip {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.69rem; font-weight: 500; color: rgba(255,255,255,0.52);
+  padding: 0.28rem 0.75rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px;
+}
+.trust-chip::before { content: '✓'; color: #4ADE80; font-weight: 700; }
+
+/* Hero stats panel */
+.hero-panel {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 16px; overflow: hidden; backdrop-filter: blur(10px);
+}
+.stat-row {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1.25rem 1.5rem; transition: background 0.25s;
+}
+.stat-row:hover { background: rgba(255,255,255,0.04); }
+.stat-row + .stat-row { border-top: 1px solid rgba(255,255,255,0.06); }
+.stat-icon {
+  width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+}
+.si-red  { background: rgba(232,71,42,0.14); }
+.si-teal { background: rgba(42,127,165,0.14); }
+.stat-val {
+  font-family: var(--font-display); font-size: 1.6rem;
+  color: var(--white); line-height: 1;
+}
+.stat-lbl { font-size: 0.7rem; color: rgba(255,255,255,0.42); letter-spacing: 0.02em; margin-top: 0.18rem; }
+
+/* Open badge */
+.open-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.64rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.25rem 0.7rem; border-radius: 99px;
+}
+.open-badge.open   { background: rgba(74,222,128,0.1);  color: #4ADE80; border: 1px solid rgba(74,222,128,0.2); }
+.open-badge.closed { background: rgba(232,71,42,0.1);   color: #F87171; border: 1px solid rgba(232,71,42,0.2); }
+.badge-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.open   .badge-dot { background: #4ADE80; animation: blink 1.4s ease infinite; }
+.closed .badge-dot { background: #F87171; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.hero-hours { padding: 1rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); }
+.hours-row { display: flex; justify-content: space-between; font-size: 0.76rem; margin-bottom: 0.35rem; }
+.hours-row:last-child { margin-bottom: 0; }
+.hours-days { color: rgba(255,255,255,0.5); }
+.hours-time { color: rgba(255,255,255,0.8); font-weight: 500; }
+
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-panel { display: none; }
+}
+@media (max-width: 768px) {
+  .hero-inner { text-align: center; }
+  .hero-actions { justify-content: center; }
+  .hero-trust { justify-content: center; }
+  .hero-video-wrap video { display: none; }
+  .hero-overlay { background: rgba(15,43,61,0.97); }
+}
+
+/* ── Credentials strip ───────────────────────── */
+.creds-strip { background: var(--navy); padding: 2.25rem var(--pad-x); }
+.creds-row {
+  max-width: var(--content); margin: 0 auto;
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  border-radius: 14px; overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  gap: 1px;
+}
+.cred-cell {
+  background: rgba(15,43,61,0.9);
+  padding: 1.35rem 1rem; text-align: center;
+  transition: background 0.25s;
+}
+.cred-cell:hover { background: rgba(42,127,165,0.12); }
+.cred-icon { font-size: 1.3rem; margin-bottom: 0.35rem; }
+.cred-stat { font-family: var(--font-display); font-size: 1.2rem; color: var(--white); margin-bottom: 0.15rem; }
+.cred-label { font-size: 0.66rem; color: rgba(255,255,255,0.42); letter-spacing: 0.04em; }
+@media (max-width: 768px) { .creds-row { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 480px) { .creds-row { grid-template-columns: repeat(2, 1fr); } }
+
+/* ── Differentiators ─────────────────────────── */
+.diff-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.diff-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 18px; padding: 2rem; position: relative; overflow: hidden;
+  transition: transform 0.35s var(--spring), box-shadow 0.35s var(--ease), border-color 0.25s;
+}
+.diff-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--red), var(--teal));
+  transform: scaleX(0); transform-origin: left; transition: transform 0.35s var(--ease);
+}
+.diff-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(15,43,61,0.09); border-color: rgba(15,43,61,0.18); }
+.diff-card:hover::before { transform: scaleX(1); }
+.diff-icon {
+  width: 48px; height: 48px; border-radius: 12px; background: var(--red-light);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; margin-bottom: 1.25rem;
+  transition: background 0.25s;
+}
+.diff-card:hover .diff-icon { background: var(--teal-light); }
+.diff-h3 { font-family: var(--font-display); font-size: 1.3rem; color: var(--navy); margin-bottom: 0.5rem; }
+.diff-p  { font-size: 0.86rem; color: var(--muted); line-height: 1.72; }
+@media (max-width: 768px) { .diff-grid { grid-template-columns: 1fr; } }
+
+/* ── Services ────────────────────────────────── */
+.svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.svc-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: 18px;
+  overflow: hidden; display: flex; flex-direction: column;
+  transition: transform 0.35s var(--spring), box-shadow 0.35s var(--ease);
+}
+.svc-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(15,43,61,0.1); }
+.svc-thumb {
+  height: 130px; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+}
+.svc-thumb::before {
+  content: attr(data-emoji); position: absolute;
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  font-size: 2.75rem; line-height: 1; z-index: 1;
+}
+.svc-thumb::after {
+  content: ''; position: absolute;
+  bottom: -24px; right: -24px; width: 80px; height: 80px;
+  border-radius: 50%; background: rgba(232,71,42,0.18);
+}
+.svc-tag {
+  position: absolute; top: 0.75rem; left: 0.75rem; z-index: 2;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.2rem 0.65rem; border-radius: 99px;
+  background: rgba(232,71,42,0.9); color: var(--white);
+}
+.svc-body { padding: 1.5rem; flex: 1; }
+.svc-name { font-family: var(--font-display); font-size: 1.15rem; color: var(--navy); margin-bottom: 0.5rem; }
+.svc-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.1rem; }
+.svc-price { font-size: 0.78rem; font-weight: 600; color: var(--teal); }
+@media (max-width: 1024px) { .svc-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .svc-grid { grid-template-columns: 1fr; } }
+
+/* ── Before / After ──────────────────────────── */
+.ba-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+}
+.ba-card { display: flex; flex-direction: column; gap: 0.85rem; }
+.ba-slider-wrap {
+  position: relative; border-radius: 14px; overflow: hidden;
+  aspect-ratio: 4/3; cursor: ew-resize; user-select: none;
+  background: rgba(255,255,255,0.04);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.45);
+}
+.ba-before, .ba-after { position: absolute; inset: 0; }
+.ba-after { clip-path: inset(0 50% 0 0); }
+.ba-before img, .ba-after img { width: 100%; height: 100%; object-fit: cover; }
+.ba-label {
+  position: absolute; top: 0.75rem; z-index: 3;
+  font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.18rem 0.6rem; border-radius: 99px;
+}
+.ba-before .ba-label { left:  0.75rem; background: rgba(15,43,61,0.85); color: rgba(255,255,255,0.8); }
+.ba-after  .ba-label { right: 0.75rem; background: rgba(42,127,165,0.9); color: var(--white); }
+.ba-handle {
+  position: absolute; top: 0; bottom: 0; width: 2px; background: var(--white);
+  left: 50%; transform: translateX(-50%); z-index: 10;
+}
+.ba-handle-btn {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 36px; height: 36px; border-radius: 50%; background: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.5); font-size: 0.72rem; color: var(--navy);
+  font-weight: 700; pointer-events: none;
+}
+.ba-card-info h4 {
+  font-family: var(--font-display); font-size: 1rem; color: var(--white); margin-bottom: 0.2rem;
+}
+.ba-card-info p { font-size: 0.72rem; color: rgba(255,255,255,0.42); }
+@media (max-width: 900px) { .ba-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } }
+@media (max-width: 600px) { .ba-grid { max-width: 100%; } }
+
+/* ── Process ─────────────────────────────────── */
+.process-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 2rem; position: relative;
+}
+.process-grid::before {
+  content: ''; position: absolute;
+  top: 28px; left: calc(12.5% + 22px); right: calc(12.5% + 22px);
+  height: 0; border-top: 2px dashed rgba(232,71,42,0.22); pointer-events: none;
+}
+.proc-step { text-align: center; }
+.proc-num {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--red-light); border: 2px solid var(--red); color: var(--red);
+  font-family: var(--font-display); font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.25rem; position: relative; z-index: 1;
+  transition: background 0.25s, color 0.25s, transform 0.3s var(--spring);
+}
+.proc-step:hover .proc-num { background: var(--red); color: var(--white); transform: scale(1.1); }
+.proc-h3 { font-family: var(--font-display); font-size: 1.1rem; color: var(--navy); margin-bottom: 0.45rem; }
+.proc-p  { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+@media (max-width: 900px) {
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-grid::before { display: none; }
+}
+@media (max-width: 480px) { .process-grid { grid-template-columns: 1fr; } }
+
+/* ── Comparison table ────────────────────────── */
+.compare-wrap { overflow-x: auto; border-radius: 16px; box-shadow: 0 12px 40px rgba(15,43,61,0.08); }
+.compare-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: 16px; overflow: hidden; min-width: 560px; }
+.compare-table thead tr { background: var(--navy); }
+.compare-table th {
+  padding: 1rem 1.5rem; text-align: left;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.compare-table th:first-child { color: rgba(255,255,255,0.45); width: 42%; }
+.compare-table th:nth-child(2) { color: rgba(255,255,255,0.75); }
+.compare-table th:nth-child(3) { background: rgba(42,127,165,0.3); color: #80CCEC; }
+.compare-table td {
+  padding: 0.85rem 1.5rem; font-size: 0.87rem; color: var(--navy);
+  border-bottom: 1px solid var(--border);
+}
+.compare-table tbody tr:last-child td { border-bottom: none; }
+.compare-table tbody tr:nth-child(even) td { background: rgba(244,241,237,0.5); }
+.compare-table td:nth-child(2) { color: var(--muted); }
+.compare-table td:nth-child(3) { background: rgba(42,127,165,0.04); color: var(--teal); font-weight: 600; }
+.yes { color: #22C55E; } .no { color: #EF4444; }
+
+/* ── Doctors ─────────────────────────────────── */
+.doctors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.doc-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: 20px;
+  overflow: hidden; transition: transform 0.35s var(--spring), box-shadow 0.35s var(--ease);
+}
+.doc-card:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(15,43,61,0.12); }
+.doc-img-wrap { height: 280px; overflow: hidden; position: relative; background: var(--navy); }
+.doc-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top center;
+  transition: transform 0.5s var(--ease), filter 0.5s;
+}
+.doc-card:hover .doc-img-wrap img { transform: scale(1.04); filter: brightness(0.82); }
+.doc-quote-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(15,43,61,0.95) 0%, rgba(15,43,61,0.2) 60%, transparent 100%);
+  display: flex; align-items: flex-end; padding: 1.5rem;
+  opacity: 0; transition: opacity 0.35s;
+}
+.doc-card:hover .doc-quote-overlay { opacity: 1; }
+.doc-quote-text {
+  font-family: var(--font-display); font-size: 0.92rem;
+  font-style: italic; color: rgba(255,255,255,0.9); line-height: 1.55;
+}
+.doc-quote-mobile {
+  display: none; font-family: var(--font-display); font-size: 0.88rem;
+  font-style: italic; color: var(--muted); line-height: 1.6;
+  padding-top: 0.75rem; border-top: 1px solid var(--border); margin-top: 0.75rem;
+}
+.doc-body { padding: 1.5rem; }
+.doc-name { font-family: var(--font-display); font-size: 1.2rem; color: var(--navy); margin-bottom: 0.2rem; }
+.doc-role { font-size: 0.75rem; color: var(--teal); font-weight: 500; margin-bottom: 0.75rem; letter-spacing: 0.02em; }
+.doc-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.doc-tag {
+  font-size: 0.63rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 0.2rem 0.65rem; border-radius: 99px;
+  background: var(--teal-light); color: var(--teal); border: 1px solid rgba(42,127,165,0.2);
+}
+@media (max-width: 900px) { .doctors-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) {
+  .doctors-grid { grid-template-columns: 1fr; }
+  .doc-quote-overlay { display: none; }
+  .doc-quote-mobile { display: block; }
+}
+
+/* ── Testimonials ────────────────────────────── */
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.testi-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 1.75rem;
+  transition: border-color 0.25s, background 0.25s;
+}
+.testi-card:hover { border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.07); }
+.testi-stars { color: #F59E0B; font-size: 0.85rem; letter-spacing: 0.05em; margin-bottom: 1rem; }
+.testi-text {
+  font-family: var(--font-display); font-size: 1rem; font-style: italic;
+  color: rgba(255,255,255,0.85); line-height: 1.65; margin-bottom: 1.25rem;
+}
+.testi-name { font-size: 0.82rem; font-weight: 600; color: var(--teal); }
+.testi-via  { font-size: 0.68rem; color: rgba(255,255,255,0.32); margin-top: 0.2rem; }
+.google-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 99px; padding: 0.32rem 0.9rem;
+  font-size: 0.7rem; color: rgba(255,255,255,0.55); margin-bottom: 2rem;
+}
+.google-badge strong { color: var(--white); }
+@media (max-width: 900px) { .testi-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px)  { .testi-grid { grid-template-columns: 1fr; } }
+
+/* ── Dental Tourism ──────────────────────────── */
+.tourism-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center;
+}
+.tourism-img-wrap {
+  border-radius: 20px; overflow: hidden; position: relative; aspect-ratio: 4/3;
+}
+.tourism-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.tourism-stat-chip {
+  position: absolute; bottom: 1.5rem; left: 1.5rem;
+  background: rgba(15,43,61,0.92); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
+  padding: 0.85rem 1.1rem;
+}
+.chip-val { font-family: var(--font-display); font-size: 1.7rem; color: var(--teal); }
+.chip-lbl { font-size: 0.67rem; color: rgba(255,255,255,0.55); letter-spacing: 0.05em; text-transform: uppercase; }
+.tourism-perks { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.75rem; }
+.perk { display: flex; align-items: flex-start; gap: 0.75rem; }
+.perk-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); margin-top: 0.5rem; flex-shrink: 0; }
+.perk p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+.perk strong { color: var(--navy); }
+@media (max-width: 900px) { .tourism-grid { grid-template-columns: 1fr; } }
+
+/* ── Financing ───────────────────────────────── */
+.fin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.fin-items { display: flex; flex-direction: column; gap: 1.25rem; }
+.fin-item { display: flex; gap: 1rem; align-items: flex-start; }
+.fin-icon {
+  width: 40px; height: 40px; border-radius: 10px; background: var(--teal-light);
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;
+}
+.fin-text h4 { font-family: var(--font-display); font-size: 1rem; color: var(--navy); margin-bottom: 0.2rem; }
+.fin-text p  { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+.partner-logos {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; margin-bottom: 1.25rem;
+}
+.partner-tile {
+  background: var(--white); border: 1px solid var(--border); border-radius: 12px;
+  padding: 0.9rem; height: 68px;
+  display: flex; align-items: center; justify-content: center;
+  transition: box-shadow 0.25s;
+}
+.partner-tile:hover { box-shadow: 0 8px 24px rgba(15,43,61,0.09); }
+.partner-tile img { max-height: 34px; width: auto; object-fit: contain; }
+.ins-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.ins-chip {
+  font-size: 0.7rem; font-weight: 500; padding: 0.22rem 0.75rem;
+  border-radius: 99px; background: var(--teal-light); color: var(--teal);
+  border: 1px solid rgba(42,127,165,0.2);
+}
+@media (max-width: 900px) { .fin-grid { grid-template-columns: 1fr; } }
+
+/* ── FAQ ─────────────────────────────────────── */
+.faq-layout { display: grid; grid-template-columns: 1fr 360px; gap: 4rem; align-items: start; }
+.faq-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.faq-item {
+  background: var(--white); border: 1px solid var(--border); border-radius: 12px;
+  overflow: hidden; transition: border-color 0.25s;
+}
+.faq-item.open { border-color: rgba(232,71,42,0.3); }
+.faq-q {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1.1rem 1.25rem; text-align: left;
+  font-size: 0.9rem; font-weight: 600; color: var(--navy); background: none; border: none; cursor: pointer;
+  transition: color 0.2s;
+}
+.faq-item.open .faq-q { color: var(--red); }
+.faq-chevron {
+  flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--off);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem; transition: transform 0.3s var(--ease), background 0.25s;
+}
+.faq-item.open .faq-chevron { transform: rotate(180deg); background: var(--red-light); color: var(--red); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease); }
+.faq-item.open .faq-a { max-height: 300px; }
+.faq-a-inner { padding: 0 1.25rem 1.1rem; font-size: 0.84rem; color: var(--muted); line-height: 1.75; }
+.contact-box {
+  background: var(--navy); border-radius: 18px; padding: 2rem;
+  position: sticky; top: calc(var(--nav-h) + 1.5rem);
+}
+.contact-box h3 { font-family: var(--font-display); font-size: 1.4rem; color: var(--white); margin-bottom: 0.5rem; }
+.contact-box p { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 1.5rem; line-height: 1.65; }
+.contact-phone {
+  display: flex; align-items: center; gap: 0.75rem;
+  color: rgba(255,255,255,0.8); font-size: 0.88rem; margin-bottom: 0.6rem;
+  transition: color 0.2s;
+}
+.contact-phone:hover { color: var(--teal); }
+.cph-icon {
+  width: 32px; height: 32px; border-radius: 8px; background: rgba(255,255,255,0.07);
+  display: flex; align-items: center; justify-content: center; font-size: 0.8rem;
+}
+.contact-box .btn { width: 100%; justify-content: center; margin-top: 1.25rem; }
+@media (max-width: 900px) {
+  .faq-layout { grid-template-columns: 1fr; }
+  .contact-box { position: static; }
+}
+
+/* ── Booking ─────────────────────────────────── */
+.booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+.booking-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 2.25rem;
+}
+.form-group { margin-bottom: 1.15rem; }
+.form-label { display: block; font-size: 0.76rem; font-weight: 600; color: var(--navy); letter-spacing: 0.02em; margin-bottom: 0.4rem; }
+.form-input, .form-select {
+  width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border);
+  border-radius: 8px; font-family: var(--font-body); font-size: 0.9rem; color: var(--navy);
+  background: var(--white); transition: border-color 0.2s, box-shadow 0.2s; appearance: none;
+}
+.form-input:focus, .form-select:focus {
+  outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(42,127,165,0.1);
+}
+.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%237A8C96' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 16px; padding-right: 2.5rem;
+}
+.form-submit {
+  width: 100%; padding: 0.95rem; border-radius: 8px;
+  background: var(--red); color: var(--white);
+  font-family: var(--font-body); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.03em;
+  border: none; cursor: pointer; margin-top: 0.5rem;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.form-submit:hover { background: #d63d22; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(232,71,42,0.3); }
+.booking-info { display: flex; flex-direction: column; gap: 1.5rem; }
+.binfo-item { display: flex; gap: 1rem; align-items: flex-start; }
+.binfo-icon {
+  width: 40px; height: 40px; border-radius: 10px; background: var(--red-light);
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;
+}
+.binfo-text h4 { font-size: 0.9rem; font-weight: 600; color: var(--navy); margin-bottom: 0.2rem; }
+.binfo-text p  { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+.binfo-text a  { color: var(--red); font-weight: 500; transition: color 0.2s; }
+.binfo-text a:hover { color: #d63d22; }
+@media (max-width: 900px) { .booking-grid { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .booking-card { padding: 1.5rem; } }
+
+/* ── CTA Banner ──────────────────────────────── */
+.cta-band { background: var(--red); padding: clamp(3.5rem, 6vw, 5.5rem) var(--pad-x); }
+.cta-band-inner {
+  max-width: var(--content); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+}
+.cta-h2 {
+  font-family: var(--font-display); font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  color: var(--white); line-height: 1.15; letter-spacing: -0.02em;
+}
+.cta-sub { font-size: 0.9rem; color: rgba(255,255,255,0.68); margin-top: 0.4rem; }
+.cta-acts { display: flex; gap: 0.75rem; flex-wrap: wrap; flex-shrink: 0; }
+@media (max-width: 768px) {
+  .cta-band-inner { flex-direction: column; text-align: center; }
+  .cta-acts { justify-content: center; }
+}
+
+/* ── Footer ──────────────────────────────────── */
+.footer-wrap { background: var(--navy); }
+.footer-inner {
+  max-width: var(--content); margin: 0 auto;
+  padding: clamp(4rem, 6vw, 6rem) var(--pad-x) 2.5rem;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 3rem; padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 2rem;
+}
+.f-brand img { height: 34px; margin-bottom: 1rem; }
+.f-brand p { font-size: 0.82rem; color: rgba(255,255,255,0.42); line-height: 1.72; margin-bottom: 1.1rem; }
+.f-social { display: flex; gap: 0.45rem; }
+.soc-btn {
+  width: 34px; height: 34px; border-radius: 8px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; color: rgba(255,255,255,0.5); transition: background 0.2s, color 0.2s;
+}
+.soc-btn:hover { background: rgba(255,255,255,0.11); color: var(--white); }
+.f-col h4 {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.38); margin-bottom: 1rem;
+}
+.f-col ul { display: flex; flex-direction: column; gap: 0.55rem; }
+.f-col a { font-size: 0.84rem; color: rgba(255,255,255,0.58); transition: color 0.2s; }
+.f-col a:hover { color: var(--white); }
+.f-bottom {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
+}
+.f-copy { font-size: 0.7rem; color: rgba(255,255,255,0.28); }
+.f-iso  { font-size: 0.68rem; color: rgba(255,255,255,0.28); padding: 0.18rem 0.7rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 99px; }
+@media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+
+/* ── WhatsApp FAB ────────────────────────────── */
+.wa-fab {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 900;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 24px rgba(37,211,102,0.35);
+  transition: transform 0.3s var(--spring), box-shadow 0.3s;
+  animation: fabPop 0.6s 1.8s var(--spring) both;
+}
+.wa-fab:hover { transform: scale(1.1); box-shadow: 0 12px 36px rgba(37,211,102,0.5); }
+.wa-fab svg { width: 28px; height: 28px; fill: white; }
+@keyframes fabPop {
+  from { opacity: 0; transform: scale(0.4); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Scroll reveal ───────────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+}
+.reveal.visible { opacity: 1; transform: none; }
+.d1 { transition-delay: 0.08s; }
+.d2 { transition-delay: 0.16s; }
+.d3 { transition-delay: 0.24s; }
+.d4 { transition-delay: 0.32s; }
+.d5 { transition-delay: 0.40s; }
+.d6 { transition-delay: 0.48s; }
+
+/* ── Responsive baseline ─────────────────────── */
+@media (max-width: 1024px) {
+  .nav-links, .nav-actions { display: none; }
+  .nav-burger { display: flex; }
+}
+@media (max-width: 768px) {
+  .section-hd-row { flex-direction: column; align-items: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader" role="status" aria-label="Loading Cosmodont">
+  <img src="../main-log.jpg" alt="Cosmodont" class="loader-logo" width="160" height="52" loading="eager">
+  <div class="loader-progress"><div class="loader-bar"></div></div>
+  <p class="loader-text">Where Smiles Are Crafted With Care</p>
+</div>
+
+<!-- Skip link -->
+<a href="#main" style="position:absolute;left:-9999px;z-index:9999;padding:.5rem 1rem;background:var(--red);color:white;border-radius:0 0 8px 0;font-size:.85rem;font-family:var(--font-body)">Skip to main content</a>
+
+<!-- ═══ NAV ═══ -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="Cosmodont Dental Clinic">
+      <img src="../main-log.jpg" alt="Cosmodont" width="34" height="34">
+      <span class="nav-logo-name">Cosmodont</span>
+    </a>
+    <nav class="nav-links" aria-label="Site sections">
+      <a href="#services">Services</a>
+      <a href="#doctors">Doctors</a>
+      <a href="#results">Results</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="https://wa.me/917992074028" target="_blank" rel="noopener" class="btn-ghost-nav">WhatsApp</a>
+      <a href="#book" class="btn-red-nav">Book Now</a>
+    </div>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile nav overlay -->
+<div id="nav-overlay" role="dialog" aria-label="Navigation">
+  <a href="#services">Services</a>
+  <a href="#doctors">Doctors</a>
+  <a href="#results">Results</a>
+  <a href="#testimonials">Reviews</a>
+  <a href="#book">Book Now</a>
+  <button id="nav-overlay-close" aria-label="Close menu">✕</button>
+</div>
+
+<main id="main">
+
+<!-- ═══ MARQUEE ═══ -->
+<div class="marquee-strip" role="marquee" aria-label="Clinic highlights">
+  <div class="marquee-track">
+    <span class="marquee-item">ISO 9001:2015 Certified</span>
+    <span class="marquee-item">Lucknow's #1 Aligner Clinic</span>
+    <span class="marquee-item">5-Star Google Rating</span>
+    <span class="marquee-item">100+ Happy Patients</span>
+    <span class="marquee-item">Painless Dentistry</span>
+    <span class="marquee-item">Zero Cost EMI Available</span>
+    <span class="marquee-item">Toothsi by makeO Partner</span>
+    <span class="marquee-item">Advanced 3D Scanning</span>
+    <span class="marquee-item">Dental Tourism Specialists</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item">ISO 9001:2015 Certified</span>
+    <span class="marquee-item">Lucknow's #1 Aligner Clinic</span>
+    <span class="marquee-item">5-Star Google Rating</span>
+    <span class="marquee-item">100+ Happy Patients</span>
+    <span class="marquee-item">Painless Dentistry</span>
+    <span class="marquee-item">Zero Cost EMI Available</span>
+    <span class="marquee-item">Toothsi by makeO Partner</span>
+    <span class="marquee-item">Advanced 3D Scanning</span>
+    <span class="marquee-item">Dental Tourism Specialists</span>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero" aria-label="Hero">
+  <div class="hero-video-wrap">
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <video autoplay muted loop playsinline preload="auto" poster="../reception.jpg">
+      <source src="../cosmodont-video-wl.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-inner">
+    <!-- Left: copy -->
+    <div class="hero-content">
+      <div class="hero-eyebrow">Lucknow's Premier Dental Destination</div>
+      <h1 class="hero-h1">
+        A clinic that feels<br>
+        <em>nothing like one.</em>
+      </h1>
+      <p class="hero-sub">
+        Cosmodont brings café-comfort, ISO-certified precision, and Lucknow's
+        largest clear-aligner programme under one roof — so your smile journey
+        is actually something to look forward to.
+      </p>
+      <div class="hero-actions">
+        <a href="#book" class="btn btn-red">Book Free Consultation →</a>
+        <a href="https://wa.me/917992074028" target="_blank" rel="noopener" class="btn btn-outline-w">Chat on WhatsApp</a>
+      </div>
+      <div class="hero-trust">
+        <span class="trust-chip">ISO 9001:2015 Certified</span>
+        <span class="trust-chip">5-Star Google Rated</span>
+        <span class="trust-chip">#1 Aligners in UP</span>
+        <span class="trust-chip">Zero Cost EMI</span>
+      </div>
+    </div>
+    <!-- Right: stats panel -->
+    <aside class="hero-panel" aria-label="Clinic at a glance">
+      <div class="stat-row">
+        <div class="stat-icon si-red">🦷</div>
+        <div>
+          <div class="stat-val" data-counter="100" data-suffix="+">100+</div>
+          <div class="stat-lbl">Happy Patients</div>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-icon si-teal">⭐</div>
+        <div>
+          <div class="stat-val" data-counter="5.0" data-suffix="★">5.0★</div>
+          <div class="stat-lbl">Google Rating</div>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-icon si-red">🏆</div>
+        <div>
+          <div class="stat-val">#1</div>
+          <div class="stat-lbl">Aligners in UP</div>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-icon si-teal">📅</div>
+        <div>
+          <div class="stat-val" data-counter="20" data-suffix="+">20+</div>
+          <div class="stat-lbl">Aligner Cases / Month</div>
+        </div>
+      </div>
+      <div class="hero-hours">
+        <p id="openBadge" class="open-badge closed" style="margin-bottom:0.75rem">
+          <span class="badge-dot"></span>Closed
+        </p>
+        <div class="hours-row">
+          <span class="hours-days">Mon – Thu</span>
+          <span class="hours-time">11:00 AM – 9:00 PM</span>
+        </div>
+        <div class="hours-row">
+          <span class="hours-days">Fri – Sun</span>
+          <span class="hours-time">By Appointment</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="section section-bg-cream" id="services" aria-labelledby="svc-heading">
+  <div class="inner">
+    <div class="section-hd-row reveal">
+      <div>
+        <p class="eyebrow">Our Services</p>
+        <h2 class="section-h2" id="svc-heading">Everything your smile needs,<br>under one roof.</h2>
+      </div>
+      <a href="#book" class="btn btn-red" style="flex-shrink:0">Book a Consultation →</a>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card reveal d1">
+        <img src="../clear-aligners.jpg" alt="Clear Aligners">
+
+        <div class="svc-body">
+          <h3 class="svc-name">Clear Aligners</h3>
+          <p class="svc-desc">Lucknow's #1 aligner provider — 20+ cases every month. Straighten teeth invisibly, comfortably, predictably.</p>
+          <p class="svc-price">Starting ₹55,000 · Zero Cost EMI</p>
+        </div>
+      </div>
+      <div class="svc-card reveal d2">
+        <img src="../dental-implants.jpeg" alt="Clear Aligners">
+        
+        <div class="svc-body">
+          <h3 class="svc-name">Dental Implants</h3>
+          <p class="svc-desc">Permanent, natural-looking replacements crafted to last decades. We make missing teeth a distant memory.</p>
+          <p class="svc-price">Starting ₹25,000 per implant</p>
+        </div>
+      </div>
+      <div class="svc-card reveal d3">
+        <img src="../crown-caps.jpg" alt="Clear Aligners">
+        <div class="svc-body">
+          <h3 class="svc-name">Crowns &amp; Caps</h3>
+          <p class="svc-desc">Zirconia and 3M crowns matched so precisely to your teeth, nobody will know — not even you.</p>
+          <p class="svc-price">Starting ₹8,000 per crown</p>
+        </div>
+      </div>
+      <div class="svc-card reveal d4">
+        <img src="../painless-dentistry.jpg" alt="Clear Aligners">
+        <div class="svc-body">
+          <h3 class="svc-name">Painless Dentistry</h3>
+          <p class="svc-desc">Conscious sedation so you feel calm throughout — not scared. Dentistry the way it should always have been.</p>
+          <p class="svc-price">Ask us about sedation options</p>
+        </div>
+      </div>
+      <div class="svc-card reveal d5">
+        <img src="../orthodontics.jpeg" alt="Clear Aligners">
+        <div class="svc-body">
+          <h3 class="svc-name">Orthodontics</h3>
+          <p class="svc-desc">Braces, aligners, retainers — precisely tailored to your bite and your lifestyle. Straight teeth, your way.</p>
+          <p class="svc-price">Starting ₹18,000</p>
+        </div>
+      </div>
+      <div class="svc-card reveal d6">
+        <img src="../smile-makeover.jpg" alt="Clear Aligners">
+        <div class="svc-body">
+          <h3 class="svc-name">Smile Makeover</h3>
+          <p class="svc-desc">Combine veneers, whitening, and aligners for the complete transformation. See the smile you always imagined.</p>
+          <p class="svc-price">Custom packages available</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section class="section" id="process" aria-labelledby="proc-heading">
+  <div class="inner">
+    <div class="section-hd reveal" style="text-align:center">
+      <p class="eyebrow" style="justify-content:center">How It Works</p>
+      <h2 class="section-h2" id="proc-heading">Four steps to your best smile.</h2>
+    </div>
+    <div class="process-grid">
+      <div class="proc-step reveal d1">
+        <div class="proc-num">01</div>
+        <h3 class="proc-h3">Book Online</h3>
+        <p class="proc-p">Pick a slot online or WhatsApp us. We confirm within minutes.</p>
+      </div>
+      <div class="proc-step reveal d2">
+        <div class="proc-num">02</div>
+        <h3 class="proc-h3">Café Welcome</h3>
+        <p class="proc-p">Coffee, WiFi, and zero sterile-room anxiety when you arrive.</p>
+      </div>
+      <div class="proc-step reveal d3">
+        <div class="proc-num">03</div>
+        <h3 class="proc-h3">Expert Consult</h3>
+        <p class="proc-p">Doctor listens, explains your options fully. No upselling. Ever.</p>
+      </div>
+      <div class="proc-step reveal d4">
+        <div class="proc-num">04</div>
+        <h3 class="proc-h3">Painless Treatment</h3>
+        <p class="proc-p">Your personalised plan, delivered gently at your own pace.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMPARISON ═══ -->
+<section class="section section-bg-off" id="comparison" aria-labelledby="cmp-heading">
+  <div class="inner">
+    <div class="section-hd reveal">
+      <p class="eyebrow">Why Choose Us</p>
+      <h2 class="section-h2" id="cmp-heading">Cosmodont vs. a typical clinic.</h2>
+      <p class="section-sub">See exactly how we raise the bar on every dimension that matters.</p>
+    </div>
+    <div class="compare-wrap reveal">
+      <table class="compare-table" role="table">
+        <thead>
+          <tr>
+            <th scope="col">Feature</th>
+            <th scope="col">Typical Clinic</th>
+            <th scope="col">Cosmodont</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>ISO 9001:2015 Certification</td><td><span class="no">✗ Rarely</span></td><td><span class="yes">✓ Certified</span></td></tr>
+          <tr><td>Waiting Room Experience</td><td><span class="no">Sterile &amp; anxious</span></td><td><span class="yes">Café-style comfort</span></td></tr>
+          <tr><td>Clear Aligner Expertise</td><td><span class="no">Occasional cases</span></td><td><span class="yes">20+ cases/month, #1 in UP</span></td></tr>
+          <tr><td>Pain-free Protocol</td><td><span class="no">Standard anaesthesia</span></td><td><span class="yes">Conscious sedation available</span></td></tr>
+          <tr><td>Transparent Pricing</td><td><span class="no">Surprise bills common</span></td><td><span class="yes">Full estimate upfront</span></td></tr>
+          <tr><td>Zero Cost EMI</td><td><span class="no">Limited or none</span></td><td><span class="yes">All major cards, Bajaj, Fibe</span></td></tr>
+          <tr><td>Hygiene Audit Frequency</td><td><span class="no">Annual or ad hoc</span></td><td><span class="yes">Every 3 months</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINANCING ═══ -->
+<section class="section" id="financing" aria-labelledby="fin-heading">
+  <div class="inner">
+    <div class="section-hd reveal">
+      <p class="eyebrow">Financing</p>
+      <h2 class="section-h2" id="fin-heading">Your dream smile,<br>at a pace that works for you.</h2>
+    </div>
+    <div class="fin-grid">
+      <div class="fin-items reveal">
+        <div class="fin-item">
+          <div class="fin-icon">💳</div>
+          <div class="fin-text">
+            <h4>Zero Cost EMI</h4>
+            <p>No-interest installments on all major credit cards — pay for your treatment in manageable monthly amounts.</p>
+          </div>
+        </div>
+        <div class="fin-item">
+          <div class="fin-icon">🏦</div>
+          <div class="fin-text">
+            <h4>Bajaj Finserv &amp; Fibe</h4>
+            <p>Flexible plans up to 24 months with instant approval. Low-income documentation required.</p>
+          </div>
+        </div>
+        <div class="fin-item">
+          <div class="fin-icon">🛡️</div>
+          <div class="fin-text">
+            <h4>Insurance Accepted</h4>
+            <p>We work with MediAssist, MediBuddy, and Magma Health. Bring your card — we'll handle the rest.</p>
+          </div>
+        </div>
+        <div class="fin-item">
+          <div class="fin-icon">📱</div>
+          <div class="fin-text">
+            <h4>Instant UPI / QR Pay</h4>
+            <p>Contactless payment at the counter. Fast, simple, no friction.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <div class="partner-logos">
+          <div class="partner-tile">
+            <img src="../bajaj-fin-logo.jpg" alt="Bajaj Finserv" width="120" height="34" loading="lazy">
+          </div>
+          <div class="partner-tile">
+            <img src="../fibe-logo.jpg" alt="Fibe" width="120" height="34" loading="lazy">
+          </div>
+          <div class="partner-tile">
+            <img src="../save-in-logo.jpg" alt="SaveIN" width="120" height="34" loading="lazy">
+          </div>
+        </div>
+        <p style="font-size:0.75rem;color:var(--muted);margin-bottom:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;">Insurance Partners</p>
+        <div class="ins-chips">
+          <span class="ins-chip">MediAssist</span>
+          <span class="ins-chip">MediBuddy</span>
+          <span class="ins-chip">Magma Health</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="section section-bg-cream" id="faq" aria-labelledby="faq-heading">
+  <div class="inner">
+    <div class="section-hd reveal">
+      <p class="eyebrow">FAQ</p>
+      <h2 class="section-h2" id="faq-heading">Questions we hear every day.</h2>
+    </div>
+    <div class="faq-layout">
+      <div class="faq-list reveal">
+
+        <div class="faq-item open">
+          <button class="faq-q" aria-expanded="true">
+            Is the treatment really painless?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-a">
+            <p class="faq-a-inner">Yes. We offer conscious sedation with nitrous oxide (laughing gas) for anxious patients, plus advanced local anaesthesia technique that most patients say they barely feel. Pain management is taken seriously — not as an afterthought.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How long do clear aligners take?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-a">
+            <p class="faq-a-inner">Most cases complete in 6–18 months depending on complexity. After your 3D scan, we'll show you a simulated end result before you commit to anything. You'll know exactly what to expect.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Do you offer EMI with no credit card?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-a">
+            <p class="faq-a-inner">Yes — through Bajaj Finserv and Fibe, we offer financing with minimal documentation. Approval is usually instant. Ask our front desk at your consultation.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can I get a second opinion at Cosmodont?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-a">
+            <p class="faq-a-inner">Absolutely — we encourage it. Bring your X-rays and previous reports. Our doctors will give you an honest assessment without any pressure to proceed with us.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Is Cosmodont ISO certified?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-a">
+            <p class="faq-a-inner">Yes. We hold ISO 9001:2015 certification, which means our sterilisation, workflows, and patient safety protocols are independently audited every three months — not just annually.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Do you treat patients from outside Lucknow?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-a">
+            <p class="faq-a-inner">Yes — we actively welcome dental tourists from Delhi, Mumbai, and across UP. We offer virtual consultations before you travel, and we schedule treatments to minimise your trips.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sticky contact box -->
+      <aside class="contact-box reveal d2">
+        <h3>Still have questions?</h3>
+        <p>Our team is online Mon–Thu, 11 AM to 9 PM. WhatsApp us for a quick response — usually under 10 minutes.</p>
+        <a href="tel:01206852683" class="contact-phone">
+          <span class="cph-icon">📞</span> 0120-6852683
+        </a>
+        <a href="tel:07992074028" class="contact-phone">
+          <span class="cph-icon">📞</span> +91-79920-74028
+        </a>
+        <a href="https://wa.me/917992074028" target="_blank" rel="noopener" class="btn btn-teal">
+          WhatsApp Us →
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BOOKING ═══ -->
+<section class="section" id="book" aria-labelledby="book-heading">
+  <div class="inner">
+    <div class="section-hd reveal">
+      <p class="eyebrow">Book Appointment</p>
+      <h2 class="section-h2" id="book-heading">Ready to start? So are we.</h2>
+      <p class="section-sub">Book your free consultation below — or just WhatsApp us and we'll do the rest.</p>
+    </div>
+    <div class="booking-grid">
+      <div class="booking-card reveal">
+        <form id="bookingForm" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="f-name">Full Name</label>
+            <input class="form-input" type="text" id="f-name" name="name" placeholder="Your name" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-phone">Phone Number</label>
+            <input class="form-input" type="tel" id="f-phone" name="phone" placeholder="+91 XXXXX XXXXX" required autocomplete="tel">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-service">I'm interested in…</label>
+            <select class="form-select" id="f-service" name="service" required>
+              <option value="" disabled selected>Choose a service</option>
+              <option>Clear Aligners</option>
+              <option>Dental Implants</option>
+              <option>Crowns &amp; Caps</option>
+              <option>Painless Dentistry</option>
+              <option>Orthodontics</option>
+              <option>Smile Makeover</option>
+              <option>Not sure — need advice</option>
+            </select>
+          </div>
+          <button type="submit" class="form-submit">Book Free Consultation →</button>
+        </form>
+      </div>
+      <div class="booking-info reveal d2">
+        <div class="binfo-item">
+          <div class="binfo-icon">📍</div>
+          <div class="binfo-text">
+            <h4>Our Address</h4>
+            <p>1/246, Viram Khand 1, Gomti Nagar, Lucknow<br>
+            <a href="https://www.google.com/maps/place/Cosmodont+Dental+Clinic" target="_blank" rel="noopener">Open in Google Maps →</a></p>
+          </div>
+        </div>
+        <div class="binfo-item">
+          <div class="binfo-icon">📞</div>
+          <div class="binfo-text">
+            <h4>Call Us</h4>
+            <p><a href="tel:01206852683">0120-6852683</a><br><a href="tel:07992074028">+91-79920-74028</a></p>
+          </div>
+        </div>
+        <div class="binfo-item">
+          <div class="binfo-icon">🕐</div>
+          <div class="binfo-text">
+            <h4>Clinic Hours</h4>
+            <p>Mon – Thu: 11:00 AM – 9:00 PM<br>Fri – Sun: By Appointment</p>
+          </div>
+        </div>
+        <div class="binfo-item">
+          <div class="binfo-icon">💬</div>
+          <div class="binfo-text">
+            <h4>WhatsApp (Fastest)</h4>
+            <p><a href="https://wa.me/917992074028" target="_blank" rel="noopener">Message us on WhatsApp →</a><br>Usually replies within 10 minutes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CREDENTIALS STRIP ═══ -->
+<div class="creds-strip" aria-label="Trust credentials">
+  <div class="creds-row">
+    <div class="cred-cell reveal">
+      <div class="cred-icon">🏅</div>
+      <div class="cred-stat">ISO 9001:2015</div>
+      <div class="cred-label">Certified Clinic</div>
+    </div>
+    <div class="cred-cell reveal d1">
+      <div class="cred-icon">⭐</div>
+      <div class="cred-stat">5-Star</div>
+      <div class="cred-label">Google Rating</div>
+    </div>
+    <div class="cred-cell reveal d2">
+      <div class="cred-icon">🦷</div>
+      <div class="cred-stat">Largest in UP</div>
+      <div class="cred-label">Aligner Provider</div>
+    </div>
+    <div class="cred-cell reveal d3">
+      <div class="cred-icon">🏥</div>
+      <div class="cred-stat">3-Month</div>
+      <div class="cred-label">Hygiene Audits</div>
+    </div>
+    <div class="cred-cell reveal d4">
+      <div class="cred-icon">💳</div>
+      <div class="cred-stat">Zero Cost</div>
+      <div class="cred-label">EMI Available</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BEFORE / AFTER ═══ -->
+<section class="section section-bg-navy" id="results" aria-labelledby="ba-heading">
+  <div class="inner">
+    <div class="section-hd reveal">
+      <p class="eyebrow eyebrow-white">Real Results</p>
+      <h2 class="section-h2 section-h2-white" id="ba-heading">The proof is in the smile.</h2>
+      <p class="section-sub section-sub-white">Drag the slider to see genuine before & after transformations from our patients.</p>
+    </div>
+    <div class="ba-grid">
+
+      <!-- Case 1 -->
+      <div class="ba-card reveal d1">
+        <div class="ba-slider-wrap" data-slider tabindex="0" role="img" aria-label="Clear Aligner Transformation slider">
+          <div class="ba-before">
+            <span class="ba-label">Before</span>
+            <img src="../transformation-1-before.jpg" alt="Before — Clear Aligner" width="600" height="450" loading="lazy">
+          </div>
+          <div class="ba-after">
+            <span class="ba-label">After</span>
+            <img src="../transformation-1-after.jpg" alt="After — Clear Aligner" width="600" height="450" loading="lazy" style="filter:saturate(1.1) brightness(1.05)">
+          </div>
+          <div class="ba-handle"><div class="ba-handle-btn">⇔</div></div>
+        </div>
+        <div class="ba-card-info">
+          <h4>Clear Aligner Transformation</h4>
+          <p>Cosmetic · Aligners · 14 months</p>
+        </div>
+      </div>
+
+      <!-- Case 2 -->
+      <div class="ba-card reveal d2">
+        <div class="ba-slider-wrap" data-slider tabindex="0" role="img" aria-label="Smile Makeover slider">
+          <div class="ba-before">
+            <span class="ba-label">Before</span>
+            <img src="../transformation-2-before.jpg" alt="Before — Smile Makeover" width="600" height="450" loading="lazy">
+          </div>
+          <div class="ba-after">
+            <span class="ba-label">After</span>
+            <img src="../transformation-2-after.jpg" alt="After — Smile Makeover" width="600" height="450" loading="lazy" style="filter:saturate(1.1) brightness(1.05)">
+          </div>
+          <div class="ba-handle"><div class="ba-handle-btn">⇔</div></div>
+        </div>
+        <div class="ba-card-info">
+          <h4>Smile Makeover</h4>
+          <p>Crowns · Veneers · 6 months</p>
+        </div>
+      </div>
+
+      <!-- Case 3 -->
+      <div class="ba-card reveal d3">
+        <div class="ba-slider-wrap" data-slider tabindex="0" role="img" aria-label="Dental Implant slider">
+          <div class="ba-before">
+            <span class="ba-label">Before</span>
+            <img src="../transformation-3-before.jpg" alt="Before — Dental Implant" width="600" height="450" loading="lazy">
+          </div>
+          <div class="ba-after">
+            <span class="ba-label">After</span>
+            <img src="../transformation-3-after.jpg" alt="After — Dental Implant" width="600" height="450" loading="lazy" style="filter:saturate(1.1) brightness(1.05)">
+          </div>
+          <div class="ba-handle"><div class="ba-handle-btn">⇔</div></div>
+        </div>
+        <div class="ba-card-info">
+          <h4>Dental Implant</h4>
+          <p>Implantology · Restorations</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DOCTORS ═══ -->
+<section class="section section-bg-cream" id="doctors" aria-labelledby="doc-heading">
+  <div class="inner">
+    <div class="section-hd reveal">
+      <p class="eyebrow">Meet the Team</p>
+      <h2 class="section-h2" id="doc-heading">Doctors who explain,<br>not just treat.</h2>
+      <p class="section-sub">Every specialist at Cosmodont was chosen for clinical excellence and patient empathy — in equal measure.</p>
+    </div>
+    <div class="doctors-grid">
+
+      <article class="doc-card reveal d1">
+        <div class="doc-img-wrap">
+          <img src="../Dr.-Utkarsh-Singh.jpg" alt="Dr. Utkarsh Singh" width="400" height="280" loading="lazy">
+          <div class="doc-quote-overlay">
+            <p class="doc-quote-text">"I believe in explaining everything first. A patient who understands their treatment trusts the process."</p>
+          </div>
+        </div>
+        <div class="doc-body">
+          <h3 class="doc-name">Dr. Utkarsh Singh</h3>
+          <p class="doc-role">Co-Founder &amp; Chief Dental Surgeon</p>
+          <div class="doc-tags">
+            <span class="doc-tag">Periodontics</span>
+            <span class="doc-tag">Implantology</span>
+          </div>
+          <p class="doc-quote-mobile">"I believe in explaining everything first. A patient who understands their treatment trusts the process."</p>
+        </div>
+      </article>
+
+      <article class="doc-card reveal d2">
+        <div class="doc-img-wrap">
+          <img src="../Ananya.jpg" alt="Dr. Ananya Sharma" width="400" height="280" loading="lazy">
+          <div class="doc-quote-overlay">
+            <p class="doc-quote-text">"Every smile we restore changes how someone sees themselves."</p>
+          </div>
+        </div>
+        <div class="doc-body">
+          <h3 class="doc-name">Dr. Ananya Sharma</h3>
+          <p class="doc-role">Co-Founder &amp; Chief Implant Surgeon</p>
+          <div class="doc-tags">
+            <span class="doc-tag">Implantology</span>
+            <span class="doc-tag">Dental Surgery</span>
+            <span class="doc-tag">Periodontology</span>
+          </div>
+          <p class="doc-quote-mobile">"Every smile we restore changes how someone sees themselves."</p>
+        </div>
+      </article>
+
+      <article class="doc-card reveal d3">
+        <div class="doc-img-wrap">
+          <img src="../Abhinav.jpg" alt="Dr. Abhinav Srivastav" width="400" height="280" loading="lazy">
+          <div class="doc-quote-overlay">
+            <p class="doc-quote-text">"The best dental work is the kind nobody can tell you had done."</p>
+          </div>
+        </div>
+        <div class="doc-body">
+          <h3 class="doc-name">Dr. Abhinav Srivastav</h3>
+          <p class="doc-role">Cosmetic Dentist &amp; Aligner Consultant</p>
+          <div class="doc-tags">
+            <span class="doc-tag">Cosmetic Dentistry</span>
+            <span class="doc-tag">Aligners</span>
+            <span class="doc-tag">Restorations</span>
+          </div>
+          <p class="doc-quote-mobile">"The best dental work is the kind nobody can tell you had done."</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="section section-bg-navy" id="testimonials" aria-labelledby="testi-heading">
+  <div class="inner">
+    <div class="section-hd reveal">
+      <div class="google-badge">
+        ⭐ <strong>5.0</strong> &nbsp;·&nbsp; Google Reviews &nbsp;·&nbsp; 100+ patients
+      </div>
+      <p class="eyebrow eyebrow-white">Patient Stories</p>
+      <h2 class="section-h2 section-h2-white" id="testi-heading">Straight from the chair.</h2>
+      <p class="section-sub section-sub-white">Every review below is a real Google rating, unedited.</p>
+    </div>
+    <div class="testi-grid">
+
+      <div class="testi-card reveal d1">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Gem of a doctor — explained things clearly, didn't recommend unnecessary procedures. Exactly what you want from a dentist."</p>
+        <p class="testi-name">Aakash Pathak</p>
+        <p class="testi-via">Google Local Guide</p>
+      </div>
+
+      <div class="testi-card reveal d2">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The clinic is clean, hygienic, and well organised. Dr. Utkarsh is highly professional, skilled, and truly patient-friendly."</p>
+        <p class="testi-name">Bharat Bhushan</p>
+        <p class="testi-via">Google Review</p>
+      </div>
+
+      <div class="testi-card reveal d3">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Treatment was painless and effective. Proper hygiene is maintained and appointments are managed beautifully."</p>
+        <p class="testi-name">Kushal Gupta</p>
+        <p class="testi-via">Google Review</p>
+      </div>
+
+      <div class="testi-card reveal d4">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The reception is always tidy. Laxmi manages phone and visitors seamlessly — a wonderful attitude every single time."</p>
+        <p class="testi-name">Arnav Yadav</p>
+        <p class="testi-via">Google Review</p>
+      </div>
+
+      <div class="testi-card reveal d5">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"They genuinely care about their patients in an excellent, attentive way. Rare to find in Lucknow."</p>
+        <p class="testi-name">Parikshit Pande</p>
+        <p class="testi-via">Google Review</p>
+      </div>
+
+      <div class="testi-card reveal d6">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Cosmodont is my go-to for any dental emergency. Doctors give exactly the kind of assurance every patient needs."</p>
+        <p class="testi-name">Zapan Chawla</p>
+        <p class="testi-via">Google Review</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DENTAL TOURISM ═══ -->
+<section class="section section-bg-off" id="tourism" aria-labelledby="tour-heading">
+  <div class="inner">
+    <div class="tourism-grid">
+      <div class="tourism-img-wrap reveal">
+        <img src="../reception.jpg" alt="Cosmodont clinic interior" width="600" height="450" loading="lazy">
+        <div class="tourism-stat-chip">
+          <div class="chip-val">500+</div>
+          <div class="chip-lbl">Patients from outside Lucknow</div>
+        </div>
+      </div>
+      <div class="reveal d2">
+        <p class="eyebrow">Dental Tourism</p>
+        <h2 class="section-h2" id="tour-heading">Worth travelling for.</h2>
+        <p class="section-sub">
+          Patients fly in from Delhi, Mumbai, and across UP — because expertise this refined,
+          at prices this fair, simply isn't available everywhere.
+        </p>
+        <div class="tourism-perks">
+          <div class="perk"><div class="perk-dot"></div><p><strong>Savings of 40–60%</strong> versus metro cities, with no compromise on technology or technique.</p></div>
+          <div class="perk"><div class="perk-dot"></div><p><strong>Virtual consultations</strong> so your treatment plan is ready before you arrive.</p></div>
+          <div class="perk"><div class="perk-dot"></div><p><strong>Accommodation guidance</strong> in Gomti Nagar, Lucknow's most pleasant neighbourhood.</p></div>
+          <div class="perk"><div class="perk-dot"></div><p><strong>Multi-treatment scheduling</strong> — we bundle appointments to minimise your travel days.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DIFFERENTIATORS ═══ -->
+<section class="section" id="why-us" aria-labelledby="diff-heading">
+  <div class="inner">
+    <div class="section-hd reveal">
+      <p class="eyebrow">Why Cosmodont</p>
+      <h2 class="section-h2" id="diff-heading">A clinic built around<br>how you actually feel.</h2>
+      <p class="section-sub">We designed every detail — from lighting to chair comfort — so anxiety stays at the door.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card reveal d1">
+        <div class="diff-icon">☕</div>
+        <h3 class="diff-h3">Café-Like Welcome</h3>
+        <p class="diff-p">Walk into warmth, not sterile cold. Coffee, WiFi, and zero waiting-room dread — because first impressions shape your whole experience.</p>
+      </div>
+      <div class="diff-card reveal d2">
+        <div class="diff-icon">🔬</div>
+        <h3 class="diff-h3">Advanced Technology</h3>
+        <p class="diff-p">3D intraoral scanning, digital X-rays, and precision-guided implant surgery. We invest in equipment so your results are predictable, not guesswork.</p>
+      </div>
+      <div class="diff-card reveal d3">
+        <div class="diff-icon">💬</div>
+        <h3 class="diff-h3">Transparent, No-Upsell Care</h3>
+        <p class="diff-p">You'll know exactly what you need — and what you don't. Our doctors explain everything clearly, recommend only what's necessary, and never oversell.</p>
+      </div>
+      <div class="diff-card reveal d4">
+        <div class="diff-icon">🦷</div>
+        <h3 class="diff-h3">Painless, Every Time</h3>
+        <p class="diff-p">Conscious sedation, gentle technique, and a team trained to read your comfort levels. Fear of dentists ends here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BANNER ═══ -->
+<div class="cta-band" aria-label="Call to action">
+  <div class="cta-band-inner">
+    <div>
+      <h2 class="cta-h2">Your best smile is<br>one appointment away.</h2>
+      <p class="cta-sub">Join 100+ patients who trust Cosmodont — Lucknow's most advanced dental clinic.</p>
+    </div>
+    <div class="cta-acts">
+      <a href="#book" class="btn btn-white">Book Free Consultation →</a>
+      <a href="https://wa.me/917992074028" target="_blank" rel="noopener" class="btn btn-outline-w">WhatsApp Us</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer-wrap" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="f-brand">
+        <img src="../main-log.jpg" alt="Cosmodont Dental Clinic" width="140" height="40" loading="lazy">
+        <p>A dental clinic that feels nothing like one. ISO 9001:2015 certified. Lucknow's #1 aligner provider. Mon–Thu, 11 AM – 9 PM.</p>
+        <div class="f-social">
+          <a href="https://www.instagram.com/cosmodont.dentalclinic/" target="_blank" rel="noopener" class="soc-btn" aria-label="Instagram">IG</a>
+          <a href="https://facebook.com/profile.php?id=100090996710175" target="_blank" rel="noopener" class="soc-btn" aria-label="Facebook">FB</a>
+          <a href="https://wa.me/917992074028" target="_blank" rel="noopener" class="soc-btn" aria-label="WhatsApp">WA</a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Clear Aligners</a></li>
+          <li><a href="#services">Dental Implants</a></li>
+          <li><a href="#services">Crowns &amp; Caps</a></li>
+          <li><a href="#services">Painless Dentistry</a></li>
+          <li><a href="#services">Orthodontics</a></li>
+          <li><a href="#services">Smile Makeover</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Clinic</h4>
+        <ul>
+          <li><a href="#doctors">Meet the Doctors</a></li>
+          <li><a href="#results">Before &amp; After</a></li>
+          <li><a href="#testimonials">Patient Reviews</a></li>
+          <li><a href="#tourism">Dental Tourism</a></li>
+          <li><a href="#financing">Financing</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:01206852683">0120-6852683</a></li>
+          <li><a href="tel:07992074028">+91-79920-74028</a></li>
+          <li><a href="https://wa.me/917992074028" target="_blank" rel="noopener">WhatsApp Chat</a></li>
+          <li><a href="https://www.google.com/maps/place/Cosmodont+Dental+Clinic" target="_blank" rel="noopener">Google Maps</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <p class="f-copy">© 2025 Cosmodont Dental Clinic, Lucknow. All rights reserved.</p>
+      <span class="f-iso">ISO 9001:2015 Certified</span>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/917992074028" target="_blank" rel="noopener"
+   class="wa-fab" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+/* ── Loader ──────────────────────────────────── */
+(function () {
+  const loader = document.getElementById('loader');
+  const MIN = 1200;
+  const start = Date.now();
+  function hide() {
+    const elapsed = Date.now() - start;
+    const wait = Math.max(0, MIN - elapsed);
+    setTimeout(() => {
+      loader.classList.add('out');
+      setTimeout(() => loader.remove(), 650);
+    }, wait);
+  }
+  if (document.readyState === 'complete') hide();
+  else window.addEventListener('load', hide);
+}());
+
+/* ── Custom cursor ───────────────────────────── */
+(function () {
+  const cur = document.getElementById('cursor');
+  const dot = document.getElementById('cursorDot');
+  if (!cur) return;
+  let mx = 0, my = 0, cx = 0, cy = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  function loop() {
+    cx += (mx - cx) * 0.15; cy += (my - cy) * 0.15;
+    cur.style.left = mx + 'px'; cur.style.top = my + 'px';
+    dot.style.left = cx + 'px'; dot.style.top = cy + 'px';
+    requestAnimationFrame(loop);
+  }
+  loop();
+  document.querySelectorAll('a,button,[role=button]').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cur.style.width = '36px'; cur.style.height = '36px';
+      cur.style.background = 'rgba(232,71,42,0.08)';
+    });
+    el.addEventListener('mouseleave', () => {
+      cur.style.width = ''; cur.style.height = '';
+      cur.style.background = '';
+    });
+  });
+}());
+
+/* ── Navbar scroll shrink ────────────────────── */
+(function () {
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+}());
+
+/* ── Hamburger / overlay ─────────────────────── */
+(function () {
+  const burger  = document.getElementById('navBurger');
+  const overlay = document.getElementById('nav-overlay');
+  const close   = document.getElementById('nav-overlay-close');
+  if (!burger) return;
+  function open() {
+    overlay.classList.add('open');
+    burger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function shut() {
+    overlay.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  burger.addEventListener('click', open);
+  close.addEventListener('click', shut);
+  overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', shut));
+}());
+
+/* ── Scroll reveal ───────────────────────────── */
+(function () {
+  const els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  els.forEach(el => io.observe(el));
+}());
+
+/* ── Counter animation ───────────────────────── */
+function animateCounter(el, target, suffix, duration) {
+  const isFloat = String(target).includes('.');
+  const start = performance.now();
+  const num = parseFloat(target);
+  function step(now) {
+    const p = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    const val = isFloat ? (num * ease).toFixed(1) : Math.round(num * ease);
+    el.textContent = val + suffix;
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+/* ── Counter animation via IO ────────────────── */
+(function () {
+  const els = document.querySelectorAll('[data-counter]');
+  if (!els.length) return;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el     = e.target;
+      const target = el.dataset.counter;
+      const suffix = el.dataset.suffix || '';
+      const isFloat = target.includes('.');
+      const num = parseFloat(target);
+      const dur = 1400;
+      const start = performance.now();
+      function step(now) {
+        const p   = Math.min((now - start) / dur, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        const val  = isFloat ? (num * ease).toFixed(1) : Math.round(num * ease);
+        el.textContent = val + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  els.forEach(el => io.observe(el));
+}());
+
+/* ── Open/Closed badge ───────────────────────── */
+(function () {
+  const badge = document.getElementById('openBadge');
+  if (!badge) return;
+  const now = new Date();
+  const day = now.getDay();
+  const h   = now.getHours() + now.getMinutes() / 60;
+  const isOpen = day >= 1 && day <= 4 && h >= 11 && h < 21;
+  badge.className = 'open-badge ' + (isOpen ? 'open' : 'closed');
+  badge.innerHTML = '<span class="badge-dot"></span>' + (isOpen ? 'Open Now' : 'Closed');
+}());
+
+/* ── FAQ accordion ───────────────────────────── */
+(function () {
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      // close all
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      // open clicked (if was closed)
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+}());
+
+/* ── Before/After sliders (one per card) ────────── */
+(function () {
+  document.querySelectorAll('.ba-slider-wrap[data-slider]').forEach(wrap => {
+    const afterEl  = wrap.querySelector('.ba-after');
+    const handleEl = wrap.querySelector('.ba-handle');
+    let dragging = false;
+    let activeWrap = null;
+
+    function setPos(pct) {
+      pct = Math.max(2, Math.min(98, pct));
+      afterEl.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+      handleEl.style.left    = pct + '%';
+    }
+
+    function getPct(e) {
+      const rect = wrap.getBoundingClientRect();
+      const x    = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      return (x / rect.width) * 100;
+    }
+
+    wrap.addEventListener('mousedown',  e => { dragging = true; activeWrap = wrap; setPos(getPct(e)); });
+    wrap.addEventListener('touchstart', e => { dragging = true; activeWrap = wrap; setPos(getPct(e)); }, { passive: true });
+
+    wrap.addEventListener('keydown', e => {
+      const cur = parseFloat(handleEl.style.left) || 50;
+      if (e.key === 'ArrowLeft')  { setPos(cur - 5); e.preventDefault(); }
+      if (e.key === 'ArrowRight') { setPos(cur + 5); e.preventDefault(); }
+    });
+
+    setPos(50);
+  });
+
+  /* Global move/up — only fires for the active slider */
+  let activeWrap = null;
+  document.querySelectorAll('.ba-slider-wrap[data-slider]').forEach(wrap => {
+    wrap.addEventListener('mousedown',  () => { activeWrap = wrap; });
+    wrap.addEventListener('touchstart', () => { activeWrap = wrap; }, { passive: true });
+  });
+  window.addEventListener('mousemove', e => {
+    if (!activeWrap) return;
+    const afterEl  = activeWrap.querySelector('.ba-after');
+    const handleEl = activeWrap.querySelector('.ba-handle');
+    const rect = activeWrap.getBoundingClientRect();
+    const pct  = Math.max(2, Math.min(98, ((e.clientX - rect.left) / rect.width) * 100));
+    afterEl.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+    handleEl.style.left    = pct + '%';
+  });
+  window.addEventListener('touchmove', e => {
+    if (!activeWrap) return;
+    const afterEl  = activeWrap.querySelector('.ba-after');
+    const handleEl = activeWrap.querySelector('.ba-handle');
+    const rect = activeWrap.getBoundingClientRect();
+    const pct  = Math.max(2, Math.min(98, ((e.touches[0].clientX - rect.left) / rect.width) * 100));
+    afterEl.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+    handleEl.style.left    = pct + '%';
+  }, { passive: true });
+  window.addEventListener('mouseup',  () => { activeWrap = null; });
+  window.addEventListener('touchend', () => { activeWrap = null; });
+}());
+
+/* ── Booking form → WhatsApp ─────────────────── */
+(function () {
+  const form = document.getElementById('bookingForm');
+  if (!form) return;
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name    = form.querySelector('[name=name]').value.trim();
+    const phone   = form.querySelector('[name=phone]').value.trim();
+    const service = form.querySelector('[name=service]').value;
+    if (!name || !phone || !service) return;
+    const msg = encodeURIComponent(
+      'Hello Cosmodont! I\'d like to book a consultation.\n' +
+      'Name: ' + name + '\nPhone: ' + phone + '\nService: ' + service
+    );
+    window.open('https://wa.me/917992074028?text=' + msg, '_blank');
+  });
+}());
+</script>
+</body>
+</html>

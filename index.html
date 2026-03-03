@@ -28,6 +28,7 @@
   --c-gold:  #C9A84C;
   --c-green: #10B981;
   --c-terra: #CD8561;
+  --c-edge:  #E8472A;
 }
 
 /* ── Reset ────────────────────────────────────────────────────── */
@@ -158,13 +159,15 @@ header { padding-top: 2rem; }
 /* ── Cards grid ───────────────────────────────────────────────── */
 .cards {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   padding-bottom: 6rem;
-  max-width: 900px;
+  max-width: 1140px;
   margin-left: auto;
   margin-right: auto;
 }
+@media (max-width: 900px) { .cards { grid-template-columns: repeat(2, 1fr); max-width: 720px; } }
+@media (max-width: 580px) { .cards { grid-template-columns: 1fr; max-width: 480px; } }
 
 /* ── Card ─────────────────────────────────────────────────────── */
 .card {
@@ -185,6 +188,7 @@ header { padding-top: 2rem; }
 }
 .card:nth-child(1) { animation-delay: 0.15s; }
 .card:nth-child(2) { animation-delay: 0.28s; }
+.card:nth-child(3) { animation-delay: 0.41s; }
 
 /* Per-theme hover glow */
 .card-gold:hover {
@@ -202,6 +206,11 @@ header { padding-top: 2rem; }
   box-shadow: 0 24px 64px rgba(205,133,97,0.16), 0 6px 20px rgba(0,0,0,0.35);
   border-color: rgba(205,133,97,0.26);
 }
+.card-edge:hover {
+  transform: translateY(-11px);
+  box-shadow: 0 24px 64px rgba(232,71,42,0.2), 0 6px 20px rgba(0,0,0,0.35);
+  border-color: rgba(232,71,42,0.32);
+}
 
 /* ── Swatch ───────────────────────────────────────────────────── */
 .swatch {
@@ -216,6 +225,7 @@ header { padding-top: 2rem; }
 .swatch-gold  { background: linear-gradient(145deg, #FAF7F2 0%, #EFE4CC 55%, #E3D4B0 100%); }
 .swatch-noir  { background: linear-gradient(145deg, #0A0F0D 0%, #0F1A15 55%, #0B1410 100%); }
 .swatch-blush { background: linear-gradient(145deg, #F9F5F0 0%, #EFE6D8 55%, #E8D9C6 100%); }
+.swatch-edge  { background: linear-gradient(145deg, #0F2B3D 0%, #1A3F58 50%, #2A7FA5 100%); }
 
 /* Large watermark number */
 .swatch-num {
@@ -236,6 +246,7 @@ header { padding-top: 2rem; }
 .swatch-gold  .swatch-num { color: rgba(180,145,50,0.13); }
 .swatch-noir  .swatch-num { color: rgba(16,185,129,0.09); }
 .swatch-blush .swatch-num { color: rgba(190,110,70,0.13); }
+.swatch-edge  .swatch-num { color: rgba(232,71,42,0.2); }
 
 /* Decorative mini UI bars (hint at the theme style) */
 .swatch-bars {
@@ -254,6 +265,7 @@ header { padding-top: 2rem; }
 .swatch-gold  .bar { background: #B8922A; }
 .swatch-noir  .bar { background: #10B981; }
 .swatch-blush .bar { background: #C07850; }
+.swatch-edge  .bar { background: #E8472A; }
 .bar-1 { width: 72px; opacity: 0.35; }
 .bar-2 { width: 48px; opacity: 0.22; }
 .bar-3 { width: 60px; opacity: 0.18; }
@@ -278,6 +290,7 @@ header { padding-top: 2rem; }
 .swatch-gold  .swatch-type-pill { background: rgba(180,145,50,0.18); color: rgba(180,145,50,0.9); border: 1px solid rgba(180,145,50,0.2); }
 .swatch-noir  .swatch-type-pill { background: rgba(16,185,129,0.12); color: rgba(16,185,129,0.8); border: 1px solid rgba(16,185,129,0.15); }
 .swatch-blush .swatch-type-pill { background: rgba(190,110,70,0.16); color: rgba(190,110,70,0.85); border: 1px solid rgba(190,110,70,0.18); }
+.swatch-edge  .swatch-type-pill { background: rgba(232,71,42,0.18); color: rgba(255,130,100,0.95); border: 1px solid rgba(232,71,42,0.25); }
 
 /* ── Card body ────────────────────────────────────────────────── */
 .card-body {
@@ -302,6 +315,7 @@ header { padding-top: 2rem; }
 .badge-gold  { color: var(--c-gold);  background: rgba(201,168,76,0.1);  border: 1px solid rgba(201,168,76,0.2);  }
 .badge-noir  { color: var(--c-green); background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.18); }
 .badge-blush { color: var(--c-terra); background: rgba(205,133,97,0.1);  border: 1px solid rgba(205,133,97,0.2);  }
+.badge-edge  { color: var(--c-edge);  background: rgba(232,71,42,0.1);   border: 1px solid rgba(232,71,42,0.22); }
 
 .card-name {
   font-family: var(--font-display);
@@ -445,10 +459,6 @@ body { padding-top: 40px; transition: padding-top 0.35s ease; }
 
 /* ── Responsive ───────────────────────────────────────────────── */
 @media (max-width: 600px) {
-  .cards {
-    grid-template-columns: 1fr;
-    max-width: 480px;
-  }
   .swatch { height: 160px; }
   .swatch-num { font-size: 7rem; }
 }
@@ -487,7 +497,7 @@ body { padding-top: 40px; transition: padding-top 0.35s ease; }
 
   <!-- ═══ HERO ═══ -->
   <div class="hero">
-    <div class="hero-label">Two Design Directions</div>
+    <div class="hero-label">Three Design Directions</div>
     <h1 class="hero-headline">Choose your brand.</h1>
     <p class="hero-sub">
       Each version is a complete demo — same content, different personality.
@@ -606,6 +616,46 @@ body { padding-top: 40px; transition: padding-top 0.35s ease; }
           <span class="pill">Editorial</span>
         </div>
         <a href="cosmodont-theme3.html"
+           target="_blank"
+           rel="noopener"
+           class="card-cta"
+           onclick="event.stopPropagation()">
+          Open Demo <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 3 · Bleeding Edge -->
+    <div class="card card-edge"
+         onclick="window.open('bleeding-edge/index.html','_blank')"
+         role="button"
+         tabindex="0"
+         aria-label="Open Bleeding Edge demo"
+         onkeydown="if(event.key==='Enter')window.open('bleeding-edge/index.html','_blank')">
+      <div class="swatch swatch-edge">
+        <div class="swatch-bars" aria-hidden="true">
+          <div class="bar bar-1"></div>
+          <div class="bar bar-2"></div>
+          <div class="bar bar-3"></div>
+        </div>
+        <span class="swatch-type-pill">Bold</span>
+        <span class="swatch-num" aria-hidden="true">03</span>
+      </div>
+      <div class="card-body">
+        <span class="card-badge badge-edge">03 &nbsp;·&nbsp; Edge</span>
+        <h2 class="card-name">Bleeding Edge</h2>
+        <p class="card-tagline">Bold &nbsp;·&nbsp; Dynamic &nbsp;·&nbsp; Conversion-first</p>
+        <p class="card-desc">
+          High-impact modern design. DM Serif Display on deep navy,
+          red and teal accents, loading screen, before/after slider.
+          Built to convert.
+        </p>
+        <div class="card-pills">
+          <span class="pill">Navy</span>
+          <span class="pill">Bold</span>
+          <span class="pill">Modern</span>
+        </div>
+        <a href="bleeding-edge/index.html"
            target="_blank"
            rel="noopener"
            class="card-cta"
