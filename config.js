@@ -70,7 +70,7 @@ const CONFIG = {
   doctors: [
     {
       initials:  'US',
-      image:     'Dr.-Utkarsh-Singh.jpg',
+      image:     '../Dr.-Utkarsh-Singh.jpg',
       name:      'Dr. Utkarsh Singh',
       role:      'Co-Founder & Chief Dental Surgeon',
       specialty: 'Periodontics & Implantology',
@@ -79,7 +79,7 @@ const CONFIG = {
     },
     {
       initials:  'AS',
-      image:     'Ananya.jpg',
+      image:     '../Ananya.jpg',
       name:      'Dr. Ananya Sharma',
       role:      'Co-Founder & Chief Implant Surgeon',
       specialty: 'Periodontology, Implantology & Dental Surgery',
@@ -88,7 +88,7 @@ const CONFIG = {
     },
     {
       initials:  'AbS',
-      image:     'Abhinav.jpg',
+      image:     '../Abhinav.jpg',
       name:      'Dr. Abhinav Srivastav',
       role:      'Cosmetic Dentist & Aligner Consultant',
       specialty: 'Cosmetic Dentistry, Aligners & Restorations',
@@ -139,17 +139,17 @@ const CONFIG = {
     {
       treatment: 'Clear Aligner Transformation',
       type:      'Cosmetic · Aligners',
-      image:     'transformation1.jpg',
+      image:     '../transformation1.jpg',
     },
     {
       treatment: 'Smile Makeover',
       type:      'Crowns · Veneers',
-      image:     'transformation2.jpg',
+      image:     '../transformation2.jpg',
     },
     {
       treatment: 'Dental Implant',
       type:      'Implantology · Restorations',
-      image:     'transformation3.jpg',
+      image:     '../transformation3.jpg',
     },
   ],
 
@@ -170,9 +170,9 @@ const CONFIG = {
       { icon: '🤝', text: 'Insurance accepted — Mediassist, Medibuddy & Magma Health' },
     ],
     partners: [
-      { name: 'Bajaj Finserv', logo: 'bajaj-fin-logo.jpg' },
-      { name: 'Fibe',          logo: 'fibe-logo.jpg'      },
-      { name: 'Savein',        logo: 'save-in-logo.jpg'   },
+      { name: 'Bajaj Finserv', logo: '../bajaj-fin-logo.jpg' },
+      { name: 'Fibe',          logo: '../fibe-logo.jpg'      },
+      { name: 'Savein',        logo: '../save-in-logo.jpg'   },
     ],
     insurance: ['Mediassist', 'Medibuddy', 'Magma Health'],
   },

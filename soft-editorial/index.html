@@ -1018,19 +1018,19 @@
 
 <!-- NAVBAR -->
 <nav>
-  <div class="nav-logo"><img src="main-log.jpg" alt="Cosmodont Dental Clinic" style="height:38px;width:auto;display:block;"></div>
+  <div class="nav-logo"><img src="../main-log.jpg" alt="Cosmodont Dental Clinic" style="height:38px;width:auto;display:block;"></div>
   <ul class="nav-links">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Services</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Gallery</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="nav-cta">Book Appointment</button>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book Appointment</button>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="home">
   <div>
     <div class="hero-eyebrow">ISO 9001:2015 Certified · Gomti Nagar, Lucknow</div>
     <h1 class="hero-h1">
@@ -1081,7 +1081,7 @@
 </section>
 
 <!-- WHY COSMODONT -->
-<section class="why">
+<section class="why" id="about">
   <div class="section-tag">The Cosmodont Difference</div>
   <h2 class="section-h2">We built this clinic<br><em>for the patient, not the dentist.</em></h2>
   <div class="why-grid">
@@ -1128,7 +1128,7 @@
     <div class="inside-col-main">
       <div class="inside-img-wrap inside-img-large">
         <img
-          src="Comfortable-Cafe-like-Waiting-Experience.jpg"
+          src="../Comfortable-Cafe-like-Waiting-Experience.jpg"
           alt="Café-like waiting area at Cosmodont"
           loading="lazy"
           class="inside-img"
@@ -1151,7 +1151,7 @@
       <div class="inside-img-wrap inside-img-small"
         data-image-slot="reception">
         <img
-        src="reception.jpg"
+        src="../reception.jpg"
         alt="Café-like waiting area at Cosmodont"
         loading="lazy"
         class="inside-img"
@@ -1163,7 +1163,7 @@
       <div class="inside-img-wrap inside-img-small"
         data-image-slot="equipment">
         <img
-        src="Dedicated-Sterilization-Space.jpg"
+        src="../Dedicated-Sterilization-Space.jpg"
         alt="Café-like waiting area at Cosmodont"
         loading="lazy"
         class="inside-img"
@@ -1179,7 +1179,7 @@
 </section>
 
 <!-- SERVICES -->
-<section style="padding: 100px 60px; background: var(--bg);">
+<section id="services" style="padding: 100px 60px; background: var(--bg);">
   <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px;">
     <div>
       <div class="section-tag">What We Specialise In</div>
@@ -1234,7 +1234,7 @@
   <div class="doctors-row">
     <div class="doctor-card">
       <div class="doctor-photo">
-        <img src="Dr.-Utkarsh-Singh.jpg" alt="Dr. Utkarsh Singh">
+        <img src="../Dr.-Utkarsh-Singh.jpg" alt="Dr. Utkarsh Singh">
         <div class="doctor-photo-label">Periodontics · Implantology</div>
       </div>
       <div class="doctor-info">
@@ -1245,7 +1245,7 @@
     </div>
     <div class="doctor-card">
       <div class="doctor-photo">
-        <img src="Ananya.jpg" alt="Dr. Ananya Sharma">
+        <img src="../Ananya.jpg" alt="Dr. Ananya Sharma">
         <div class="doctor-photo-label">Implantology · Surgery</div>
       </div>
       <div class="doctor-info">
@@ -1256,7 +1256,7 @@
     </div>
     <div class="doctor-card">
       <div class="doctor-photo">
-        <img src="Abhinav.jpg" alt="Dr. Abhinav Srivastav">
+        <img src="../Abhinav.jpg" alt="Dr. Abhinav Srivastav">
         <div class="doctor-photo-label">Cosmetic · Aligners</div>
       </div>
       <div class="doctor-info">
@@ -1269,7 +1269,7 @@
 </section>
 
 <!-- ═══ SECTION: BEFORE & AFTER ═══ -->
-<section class="gallery-section">
+<section class="gallery-section" id="gallery">
 
   <div class="gallery-header">
     <div>
@@ -1293,17 +1293,17 @@
   <div class="gallery-grid">
 
     <div class="gallery-card">
-      <img src="transformation1.jpg" alt="Clear Aligner Transformation" class="gallery-img" loading="lazy">
+      <img src="../transformation1.jpg" alt="Clear Aligner Transformation" class="gallery-img" loading="lazy">
       <div class="gallery-card-label">Clear Aligners</div>
     </div>
 
     <div class="gallery-card">
-      <img src="transformation2.jpg" alt="Dental Implant Transformation" class="gallery-img" loading="lazy">
+      <img src="../transformation2.jpg" alt="Dental Implant Transformation" class="gallery-img" loading="lazy">
       <div class="gallery-card-label">Dental Implants</div>
     </div>
 
     <div class="gallery-card">
-      <img src="transformation3.jpg" alt="Smile Makeover Transformation" class="gallery-img" loading="lazy">
+      <img src="../transformation3.jpg" alt="Smile Makeover Transformation" class="gallery-img" loading="lazy">
       <div class="gallery-card-label">Smile Makeover</div>
     </div>
 
@@ -1361,7 +1361,7 @@
 </section>
 
 <!-- CTA -->
-<div class="cta-block">
+<div class="cta-block" id="contact">
   <div>
     <h2>Ready for a smile<br><em>you're proud of?</em></h2>
     <p style="margin-top: 20px;">Free consultation. No pressure. We'll explain everything before we recommend anything. Just a conversation about your smile.</p>
@@ -1388,7 +1388,7 @@
 <footer>
   <div class="footer-top">
     <div>
-      <div class="footer-logo"><img src="main-log.jpg" alt="Cosmodont Dental Clinic"></div>
+      <div class="footer-logo"><img src="../main-log.jpg" alt="Cosmodont Dental Clinic"></div>
       <p class="footer-desc">ISO 9001:2015 certified dental clinic in Gomti Nagar, Lucknow. Where clinical excellence meets genuine human care.</p>
     </div>
     <div class="footer-col">
